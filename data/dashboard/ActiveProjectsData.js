@@ -1,12 +1,12 @@
 export const ActiveProjectsData = [
     {
        id:1,
-       projectName : "Dropbox Design System",
+       projectName : "WPDW23 - 00032",
        priority : "Medium",
        priorityBadgeBg : 'warning',
        hours: 34,
        progress: 15,
-       brandLogo:'/images/brand/dropbox-logo.svg',
+       brandLogo:'/images/brand/police-logo.svg',
        brandLogoBg : 'bg-white',
        members:[
         {image:'images/avatar/avatar-1.jpg'},
@@ -16,12 +16,12 @@ export const ActiveProjectsData = [
     },
     {
         id:2,
-        projectName : "Slack Team UI Design",
+        projectName : "WPDW23 - 00034",
         priority : "High",
         priorityBadgeBg : 'danger',
         hours: 47,
         progress: 35,
-        brandLogo:'/images/brand/slack-logo.svg',
+        brandLogo:'/images/brand/ambulance-logo.svg',
         brandLogoBg : 'bg-white',
         members:[
             {image:'images/avatar/avatar-4.jpg'},
@@ -31,12 +31,12 @@ export const ActiveProjectsData = [
      },
      {
         id:3,
-        projectName : "GitHub Satellite",
+        projectName : "WPDW23 - 00022",
         priority : "Low",
         priorityBadgeBg : 'info',
         hours: 120,
         progress: 75,
-        brandLogo:'/images/brand/github-logo.svg',
+        brandLogo:'/images/brand/ambulance-logo.svg',
         brandLogoBg : 'bg-white',
         members:[
             {image:'images/avatar/avatar-7.jpg'},
@@ -46,12 +46,12 @@ export const ActiveProjectsData = [
      },
      {
         id:4,
-        projectName : "3D Character Modelling",
+        projectName : "WPDW23 - 00035",
         priority : "Medium",
         priorityBadgeBg : 'warning',
         hours: 89,
         progress: 63,
-        brandLogo:'/images/brand/3dsmax-logo.svg',
+        brandLogo:'/images/brand/firefighter-logo.svg',
         brandLogoBg : 'bg-white',
         members:[
             {image:'images/avatar/avatar-10.jpg'},
@@ -61,13 +61,13 @@ export const ActiveProjectsData = [
      },
      {
         id:3,
-        projectName : "Webapp Design System",
+        projectName : "WPDW23 - 00033",
         priority : "Track",
         priorityBadgeBg : 'success',
         hours: 108,
         progress: 100,
-        brandLogo:'/images/brand/layers-logo.svg',
-        brandLogoBg : 'bg-primary',
+        brandLogo:'/images/brand/police-logo.svg',
+        brandLogoBg : 'bg-white',
         members:[
             {image:'images/avatar/avatar-13.jpg'},
             {image:'images/avatar/avatar-14.jpg'},
@@ -76,12 +76,12 @@ export const ActiveProjectsData = [
      },
      {
         id:4,
-        projectName : "Github Event Design",
+        projectName : "WPDW23 - 00039",
         priority : "Low",
         priorityBadgeBg : 'info',
         hours: 120,
         progress: 75,
-        brandLogo:'/images/brand/github-logo.svg',
+        brandLogo:'/images/brand/firefighter-logo.svg',
         brandLogoBg : 'bg-white',
         members:[
             {image:'images/avatar/avatar-16.jpg'},

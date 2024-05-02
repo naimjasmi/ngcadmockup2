@@ -8,21 +8,21 @@ import {
 export const ProjectsStats = [
     {
        id:1,
-       title : "Projects",
+       title : "Incident",
        value : 18,
        icon: <Briefcase size={18}/>,
-       statInfo: '<span className="text-dark me-2">2</span> Completed' 
+       statInfo: '<span className="text-dark me-2">5</span> Completed' 
     },
     {
         id:2,
-        title : "Active Task",
-        value : 132,
+        title : "Active Incident",
+        value : 8,
         icon: <ListTask size={18}/>,
-        statInfo: '<span className="text-dark me-2">28</span> Completed' 
+        statInfo: '<span className="text-dark me-2">5</span> Completed' 
      },
      {
         id:3,
-        title : "Teams",
+        title : "Resource Teams",
         value : 12,
         icon: <People size={18}/>,
         statInfo: '<span className="text-dark me-2">1</span> Completed' 

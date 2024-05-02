@@ -1,7 +1,7 @@
 export const TeamsData = [
     {
        id:1,
-       name : "Anita Parmar",
+       name : "Kumar Ranjit",
        email : "anita@example.com",
        role: "Front End Developer",
        lastActivity: '3 May, 2023',
