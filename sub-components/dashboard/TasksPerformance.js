@@ -76,7 +76,7 @@ const Charts = () => {
                         Action
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="2">
-                        Another action
+                        Another actions
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
