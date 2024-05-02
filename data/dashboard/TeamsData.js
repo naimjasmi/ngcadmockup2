@@ -2,48 +2,48 @@ export const TeamsData = [
     {
        id:1,
        name : "Kumar Ranjit",
-       email : "anita@example.com",
-       role: "Front End Developer",
+       email : "ranjit12@yahoo.com",
+       role: "Dispatcher",
        lastActivity: '3 May, 2023',
        image:'/images/avatar/avatar-2.jpg' 
     },
     {
         id:2,
-        name : "Jitu Chauhan",
-        email : "jituchauhan@example.com",
-        role: "Project Director",
+        name : "Nurul Syazwani binti Mohd Azmi",
+        email : "syaz@gmail.com",
+        role: "Dispatch Supervisor",
         lastActivity: 'Today',
         image:'/images/avatar/avatar-1.jpg' 
      },
      {
         id:3,
-        name : "Sandeep Chauhan",
-        email : "sandeepchauhan@example.com",
-        role: "Full- Stack Developer",
+        name : "Siti Aisyah binti Azizan",
+        email : "33aisyah@gmail.com",
+        role: "Dispatcher",
         lastActivity: 'Yesterday',
         image:'/images/avatar/avatar-3.jpg' 
      },
      {
         id:4,
-        name : "Amanda Darnell",
-        email : "amandadarnell@example.com",
-        role: "Account Manager",
+        name : "Khairul Azman bin Rahim",
+        email : "khaiazman@gmail.com",
+        role: "Dispatcher",
         lastActivity: '3 May, 2023',
         image:'/images/avatar/avatar-4.jpg' 
      },
      {
         id:3,
-        name : "Patricia Murrill",
-        email : "patriciamurrill@example.com",
-        role: "Digital Marketer",
+        name : "Amirul Hakim bin Hassan",
+        email : "amrul@gmail.com",
+        role: "Call Taker",
         lastActivity: '3 May, 2023',
         image:'/images/avatar/avatar-5.jpg' 
      },
      {
         id:4,
-        name : "Darshini Nair",
-        email : "darshininair@example.com",
-        role: "Front End Developer",
+        name : "Muhammad Farhan bin Ibrahim",
+        email : "farhanibrahim@gmail.com",
+        role: "Call Taker",
         lastActivity: '3 May, 2023',
         image:'/images/avatar/avatar-6.jpg' 
      }

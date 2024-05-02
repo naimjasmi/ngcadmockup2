@@ -22,10 +22,10 @@ export const ProjectsStats = [
      },
      {
         id:3,
-        title : "Resource Teams",
+        title : "Units",
         value : 12,
         icon: <People size={18}/>,
-        statInfo: '<span className="text-dark me-2">1</span> Completed' 
+        statInfo: '<span className="text-dark me-2">4</span> Assigned' 
      },
      {
         id:4,

@@ -52,7 +52,7 @@ const ActiveProjects = () => {
                                                     )
                                                 })}
                                                 <span className="avatar avatar-sm avatar-primary">
-                                                    <span className="avatar-initials rounded-circle fs-6">+5</span>
+                                                    <span className="avatar-initials rounded-circle fs-6">+2</span>
                                                 </span>
                                             </div>
                                         </td>

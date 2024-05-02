@@ -75,9 +75,6 @@ const Charts = () => {
                     <Dropdown.Item eventKey="1">
                         Action
                     </Dropdown.Item>
-                    <Dropdown.Item eventKey="2">
-                        Another actions
-                    </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         );
@@ -88,7 +85,7 @@ const Charts = () => {
             <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
                     <div>
-                        <h4 className="mb-0">Tasks Performance </h4>
+                        <h4 className="mb-0">Case Performance</h4>
                     </div>
                     <ActionMenu />
                 </div>
