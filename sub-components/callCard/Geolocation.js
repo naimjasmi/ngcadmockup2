@@ -20,7 +20,9 @@ const Geolocation = () => {
 
           <Col sm={12} className="mb-3 mb-lg-0">
             {/* add the map here*/}
+            {/* test commit*/}
           </Col>
+          
         </Row>
       </div>
     </Row>
