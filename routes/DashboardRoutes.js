@@ -43,9 +43,14 @@ export const DashboardMenu = [
 	},
 	{
 		id: uuid(),
-		title: 'Layouts',
+		title: 'CALLER INFO',
+		grouptitle: true
+	},
+	{
+		id: uuid(),
+		title: 'Call Card',
 		icon: 'layout',
-		link: '/layout-vertical'
+		link: '/callCard'
 	},	
 	{
 		id: uuid(),

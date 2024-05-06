@@ -22,6 +22,9 @@ import EmailSetting from 'sub-components/settings/EmailSetting';
 import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
+import CallerDetail from './callerinfo/CallerDetail';
+import EventCode from './callerinfo/EventCode';
+import Geolocation from './callCard/Geolocation';
 
 
 export {
@@ -40,5 +43,8 @@ export {
    EmailSetting,  
    GeneralSetting, 
    Notifications, 
-   Preferences
+   Preferences,
+   CallerDetail,
+   EventCode,
+   Geolocation
 };
