@@ -17,10 +17,10 @@ const CallCard = () => {
         </Col>
       </Row> */}
       <Row className="justify-content-center">
-        <Col xl={7} lg={7} md={12} xs={12}>
+        <Col xl={6} lg={6} md={12} xs={12}>
           <CallerDetail />
         </Col>
-        <Col xl={5} lg={5} md={12} xs={12}>
+        <Col xl={6} lg={6} md={12} xs={12}>
           <Card>
             <Card.Body>
               <Geolocation />

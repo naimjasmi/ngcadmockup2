@@ -48,34 +48,34 @@ const Geolocation = () => {
         </div>
         <Row className="mb-3">
           <Col sm={12} className="mb-3 mb-lg-0">
+
             <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
-              <Form.Group>
-                <Form.Control
-                  type="text"
-                  placeholder="Search for a location..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">Search</Button>
+              <Row>
+                <Col xl={6} lg={6} md={6} xs={6}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for a location..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col xl={4} lg={4} md={4} xs={4}>
+                  <Button variant="primary" type="submit">Search</Button>
+                </Col>
+              </Row>
+
             </Form>
           </Col>
         </Row>
         <Row>
           <Col sm={12} className="mb-3 mb-lg-0">
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "720px" }}>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "680px" }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
-              {selectedLocation && (
-                <Marker position={[selectedLocation.lat, selectedLocation.lon]} icon={markerIcon}>
-                  <Popup>
-                    This is your selected location: <br />
-                    Latitude: {selectedLocation.lat}, Longitude: {selectedLocation.lon}
-                  </Popup>
-                </Marker>
-              )}
               {searchResults.map(result => (
                 <Marker
                   key={result.place_id}
@@ -84,14 +84,14 @@ const Geolocation = () => {
                     click: () => handleResultClick(result)
                   }}
                   icon={new L.Icon({
-                  iconUrl: MarkerIcon.src,
-                  iconRetinaUrl: MarkerIcon.src,
-                  iconSize: [25, 41],
-                  iconAnchor: [12.5, 41],
-                  popupAnchor: [0, -41],
-                  shadowUrl: MarkerShadow.src,
-                  shadowSize: [41, 41],
-                })}
+                    iconUrl: MarkerIcon.src,
+                    iconRetinaUrl: MarkerIcon.src,
+                    iconSize: [25, 41],
+                    iconAnchor: [12.5, 41],
+                    popupAnchor: [0, -41],
+                    shadowUrl: MarkerShadow.src,
+                    shadowSize: [41, 41],
+                  })}
                 >
                   <Popup>{result.display_name}</Popup>
                 </Marker>

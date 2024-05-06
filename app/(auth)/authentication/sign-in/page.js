@@ -17,7 +17,7 @@ const SignIn = () => {
   function handleLogin(ev) {
     ev.preventDefault();
     //login logic
-    router.push('/');
+    router.push('/callCard');
   }
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
