@@ -22,9 +22,9 @@ import EmailSetting from 'sub-components/settings/EmailSetting';
 import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
-import CallerDetail from './callerinfo/CallerDetail';
-import EventCode from './callerinfo/EventCode';
-import Geolocation from './callCard/Geolocation';
+import CallerDetail from 'sub-components/callCard/CallerDetail';
+import EventCode from 'sub-components/callCard/EventCode';
+import Geolocation from 'sub-components/callCard/Geolocation';
 
 
 export {
