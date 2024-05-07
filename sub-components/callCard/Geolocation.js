@@ -9,6 +9,7 @@ import L from 'leaflet';
 const Geolocation = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [markedMarkers, setMarkedMarkers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const handleSearch = async () => {
@@ -26,19 +27,24 @@ const Geolocation = () => {
   const handleResultClick = (result) => {
     setSelectedLocation({
       lat: parseFloat(result.lat),
-      lon: parseFloat(result.lon)
+      lon: parseFloat(result.lon),
+      name: result.display_name
     });
   };
 
-  const markerIcon = new L.Icon({
-    iconUrl: MarkerIcon,
-    iconRetinaUrl: MarkerIcon,
-    iconSize: [25, 41],
-    iconAnchor: [12.5, 41],
-    popupAnchor: [0, -41],
-    shadowUrl: MarkerShadow,
-    shadowSize: [41, 41]
-  });
+  const handleMarkButtonClick = () => {
+    // Add the selected location to markedMarkers
+    if (selectedLocation) {
+      setMarkedMarkers([...markedMarkers, selectedLocation]);
+    }
+  };
+
+  const handleRemoveMarker = (index) => {
+    // Remove the marker at the specified index
+    const updatedMarkers = [...markedMarkers];
+    updatedMarkers.splice(index, 1);
+    setMarkedMarkers(updatedMarkers);
+  };
 
   return (
     <Row className="mb-0">
@@ -48,7 +54,6 @@ const Geolocation = () => {
         </div>
         <Row className="mb-3">
           <Col sm={12} className="mb-3 mb-lg-0">
-
             <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
               <Row>
                 <Col xl={6} lg={6} md={6} xs={6}>
@@ -65,7 +70,6 @@ const Geolocation = () => {
                   <Button variant="primary" type="submit">Search</Button>
                 </Col>
               </Row>
-
             </Form>
           </Col>
         </Row>
@@ -76,6 +80,28 @@ const Geolocation = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
+              {markedMarkers.map((marker, index) => (
+                <Marker
+                  key={`marked-${index}`}
+                  position={[marker.lat, marker.lon]}
+                  icon={new L.Icon({
+                    iconUrl: MarkerIcon.src,
+                    iconRetinaUrl: MarkerIcon.src,
+                    iconSize: [25, 41],
+                    iconAnchor: [12.5, 41],
+                    popupAnchor: [0, -41],
+                    shadowUrl: MarkerShadow.src,
+                    shadowSize: [41, 41],
+                  })}
+                >
+                  <Popup>
+                    <div>
+                      {marker.name}
+                      <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
               {searchResults.map(result => (
                 <Marker
                   key={result.place_id}
@@ -93,7 +119,12 @@ const Geolocation = () => {
                     shadowSize: [41, 41],
                   })}
                 >
-                  <Popup>{result.display_name}</Popup>
+                  <Popup>
+                    <div>
+                      {result.display_name}
+                      <Button className='m-2' onClick={handleMarkButtonClick} size="sm">Mark</Button>
+                    </div>
+                  </Popup>
                 </Marker>
               ))}
             </MapContainer>
