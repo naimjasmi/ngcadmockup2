@@ -9,6 +9,7 @@ import L from 'leaflet';
 const Geolocation = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [markedMarkers, setMarkedMarkers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const handleSearch = async () => {
@@ -26,56 +27,78 @@ const Geolocation = () => {
   const handleResultClick = (result) => {
     setSelectedLocation({
       lat: parseFloat(result.lat),
-      lon: parseFloat(result.lon)
+      lon: parseFloat(result.lon),
+      name: result.display_name
     });
   };
 
-  const markerIcon = new L.Icon({
-    iconUrl: MarkerIcon,
-    iconRetinaUrl: MarkerIcon,
-    iconSize: [25, 41],
-    iconAnchor: [12.5, 41],
-    popupAnchor: [0, -41],
-    shadowUrl: MarkerShadow,
-    shadowSize: [41, 41]
-  });
+  const handleMarkButtonClick = () => {
+    // Add the selected location to markedMarkers
+    if (selectedLocation) {
+      setMarkedMarkers([...markedMarkers, selectedLocation]);
+    }
+  };
+
+  const handleRemoveMarker = (index) => {
+    // Remove the marker at the specified index
+    const updatedMarkers = [...markedMarkers];
+    updatedMarkers.splice(index, 1);
+    setMarkedMarkers(updatedMarkers);
+  };
 
   return (
     <Row className="mb-0">
       <div>
-        <div className="mb-6">
-          <h4 className="mb-1">Geolocation</h4>
-        </div>
         <Row className="mb-3">
           <Col sm={12} className="mb-3 mb-lg-0">
             <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
-              <Form.Group>
-                <Form.Control
-                  type="text"
-                  placeholder="Search for a location..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">Search</Button>
+              <Row>
+                <Col xl={6} lg={6} md={6} xs={6}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for a location..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col xl={4} lg={4} md={4} xs={4}>
+                  <Button variant="primary" type="submit">Search</Button>
+                </Col>
+              </Row>
             </Form>
           </Col>
         </Row>
         <Row>
           <Col sm={12} className="mb-3 mb-lg-0">
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "720px" }}>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "680px" }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
-              {selectedLocation && (
-                <Marker position={[selectedLocation.lat, selectedLocation.lon]} icon={markerIcon}>
+              {markedMarkers.map((marker, index) => (
+                <Marker
+                  key={`marked-${index}`}
+                  position={[marker.lat, marker.lon]}
+                  icon={new L.Icon({
+                    iconUrl: MarkerIcon.src,
+                    iconRetinaUrl: MarkerIcon.src,
+                    iconSize: [25, 41],
+                    iconAnchor: [12.5, 41],
+                    popupAnchor: [0, -41],
+                    shadowUrl: MarkerShadow.src,
+                    shadowSize: [41, 41],
+                  })}
+                >
                   <Popup>
-                    This is your selected location: <br />
-                    Latitude: {selectedLocation.lat}, Longitude: {selectedLocation.lon}
+                    <div>
+                      {marker.name}
+                      <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
+                    </div>
                   </Popup>
                 </Marker>
-              )}
+              ))}
               {searchResults.map(result => (
                 <Marker
                   key={result.place_id}
@@ -84,16 +107,21 @@ const Geolocation = () => {
                     click: () => handleResultClick(result)
                   }}
                   icon={new L.Icon({
-                  iconUrl: MarkerIcon.src,
-                  iconRetinaUrl: MarkerIcon.src,
-                  iconSize: [25, 41],
-                  iconAnchor: [12.5, 41],
-                  popupAnchor: [0, -41],
-                  shadowUrl: MarkerShadow.src,
-                  shadowSize: [41, 41],
-                })}
+                    iconUrl: MarkerIcon.src,
+                    iconRetinaUrl: MarkerIcon.src,
+                    iconSize: [25, 41],
+                    iconAnchor: [12.5, 41],
+                    popupAnchor: [0, -41],
+                    shadowUrl: MarkerShadow.src,
+                    shadowSize: [41, 41],
+                  })}
                 >
-                  <Popup>{result.display_name}</Popup>
+                  <Popup>
+                    <div>
+                      {result.display_name}
+                      <Button className='m-2' onClick={handleMarkButtonClick} size="sm">Mark</Button>
+                    </div>
+                  </Popup>
                 </Marker>
               ))}
             </MapContainer>
