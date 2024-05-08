@@ -29,7 +29,7 @@ const Home = () => {
                                     <h3 className="mb-0  text-white">Incident</h3>
                                 </div>
                                 <div>
-                                    <Link href="#" className="btn btn-white">Create New Report</Link>
+                                    <Link href="/callCard" className="btn btn-white">Create New Report</Link>
                                 </div>
                             </div>
                         </div>
