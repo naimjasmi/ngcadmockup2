@@ -1,25 +1,28 @@
 'use client'
 // Import necessary modules
-import React, { useState } from 'react'; 
-import { Col, Row, Container, Card, Button, Modal } from 'react-bootstrap'; 
-import { CallerDetail, Geolocation } from 'sub-components'; 
+import React, { useState } from 'react';
+import { Col, Row, Container, Card, Button, Modal } from 'react-bootstrap';
+import { CallerDetail, Geolocation, EventCode } from 'sub-components';
 
 // Define CallCard component
 const CallCard = () => {
   // State to manage modal visibility
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   // Function to toggle modal visibility
-  const toggleModal = () => setShowModal(!showModal); 
+  const toggleModal = () => setShowModal(!showModal);
 
   return (
     <Container fluid className="px-6 py-4">
       {/* CallerDetail component */}
       <Row className="justify-content-center">
-        <Col xl={7} lg={6} md={12} xs={12}>
+        <Col xl={2} lg={6} md={6} xs={12}>
+          <EventCode />
+        </Col>
+        <Col xl={6} lg={6} md={6} xs={12}>
           <CallerDetail />
         </Col>
         {/* Button to open modal */}
-        <Col xl={5} lg={6} md={12} xs={12}>
+        <Col xl={4} lg={12} md={12} xs={12}>
           <Card>
             <Card.Body>
               <Geolocation />
