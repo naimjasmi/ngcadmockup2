@@ -49,7 +49,7 @@ const ProjectsContributions = () => {
         <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
             <Card>
                 <Card.Body>
-                    <Card.Title as="h4">Projects Contributions</Card.Title>
+                    <Card.Title as="h4">Case Contributions</Card.Title>
                     {ProjectsContributionsData.map((item, index) => {
                         return (
                             <div className="d-md-flex justify-content-between align-items-center mb-4" key={index}>

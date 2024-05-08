@@ -27,7 +27,7 @@ const SignIn = () => {
           {/* Card body */}
           <Card.Body className="p-6">
             <div className="mb-4">
-              <Link href="/"><Image src="" className="mb-2" alt="logo" /></Link>
+              <Link href="/"><Image src="/images/brand/logo/emergensyslogo.png" className="mb-2" alt="" style={{ maxWidth: '150px' }} /></Link>
               <p className="mb-6">Please enter your user information.</p>
             </div>
             {/* Form */}
@@ -57,10 +57,7 @@ const SignIn = () => {
                   <div className="d-grid">
                     <Button variant="primary" type="submit">Sign In</Button>
                   </div>
-                  <div className="d-md-flex justify-content-between mt-4">
-                    <div className="mb-2 mb-md-0">
-                      <Link href="/authentication/sign-up" className="fs-5">Create An Account </Link>
-                    </div>
+                  <div className="d-md-flex justify-content-center mt-4">
                     <div>
                       <Link href="/authentication/forget-password" className="text-inherit fs-5">Forgot your password?</Link>
                     </div>
