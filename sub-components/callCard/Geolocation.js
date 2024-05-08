@@ -49,9 +49,6 @@ const Geolocation = () => {
   return (
     <Row className="mb-0">
       <div>
-        <div className="mb-6">
-          <h4 className="mb-1">Geolocation</h4>
-        </div>
         <Row className="mb-3">
           <Col sm={12} className="mb-3 mb-lg-0">
             <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
