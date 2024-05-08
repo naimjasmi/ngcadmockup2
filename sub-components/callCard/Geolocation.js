@@ -47,13 +47,12 @@ const Geolocation = () => {
   };
 
   return (
-    <Row className="mb-0">
       <div>
         <Row className="mb-3">
-          <Col sm={12} className="mb-3 mb-lg-0">
+          <Col>
             <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
               <Row>
-                <Col xl={6} lg={6} md={6} xs={6}>
+                <Col xl={8} lg={8} md={8} xs={4}>
                   <Form.Group>
                     <Form.Control
                       type="text"
@@ -71,8 +70,8 @@ const Geolocation = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={12} className="mb-3 mb-lg-0">
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "680px" }}>
+          <Col>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "660px" }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -128,7 +127,6 @@ const Geolocation = () => {
           </Col>
         </Row>
       </div>
-    </Row>
   );
 };
 
