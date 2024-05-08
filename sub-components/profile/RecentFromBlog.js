@@ -50,10 +50,10 @@ const RecentFromBlog = () => {
             {/* avatar */}
             <div className="d-flex align-items-center">
               <div>
-                <Image src="/images/avatar/avatar-1.jpg" alt="" className="avatar avatar-md rounded-circle" />
+                <Image src="/images/avatar/avatardefault.png" alt="" className="avatar avatar-md rounded-circle" />
               </div>
               <div className="ms-3">
-                <h5 className="mb-0 fw-bold">Jitu Chauhan</h5>
+                <h5 className="mb-0 fw-bold">Khairul Akmal</h5>
                 <p className="mb-0">19 minutes ago</p>
               </div>
             </div>
@@ -78,19 +78,19 @@ const RecentFromBlog = () => {
               <span className="avatar avatar-sm">
                 {/* Image */}
                 <Image alt="avatar"
-                  src="/images/avatar/avatar-7.jpg"
+                  src="/images/avatar/avatardefault.png"
                   className="rounded-circle" />
               </span>
               <span className="avatar avatar-sm">
                 {/* Image */}
                 <Image alt="avatar"
-                  src="/images/avatar/avatar-8.jpg"
+                  src="/images/avatar/avatardefault.png"
                   className="rounded-circle" />
               </span>
               <span className="avatar avatar-sm">
                 {/* Image */}
                 <Image alt="avatar"
-                  src="/images/avatar/avatar-9.jpg"
+                  src="/images/avatar/avatardefault.png"
                   className="rounded-circle" />
               </span>
             </div>
@@ -99,7 +99,7 @@ const RecentFromBlog = () => {
           {/* row */}
           <Row>
             <Col xl={1} lg={2} md={2} xs={12} className="mb-3 mb-lg-0">
-              <Image src="/images/avatar/avatar-1.jpg" className="avatar avatar-md rounded-circle" alt="" />
+              <Image src="/images/avatar/avatardefault.png" className="avatar avatar-md rounded-circle" alt="" />
             </Col>
             <Col xl={11} lg={10} md={9} xs={12}>
               <Row className="row g-3 align-items-center">

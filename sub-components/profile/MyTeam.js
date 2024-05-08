@@ -10,11 +10,11 @@ const MyTeam = () => {
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <div className="d-flex align-items-center">
                         <div>
-                            <Image src="/images/avatar/avatar-1.jpg" className="rounded-circle avatar-md" alt="" />
+                            <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                         </div>
                         <div className="ms-3 ">
-                            <h5 className="mb-1">Dianna Smiley</h5>
-                            <p className="text-muted mb-0 fs-5 text-muted">UI / UX Designer</p>
+                            <h5 className="mb-1">Fauziah Rashid</h5>
+                            <p className="text-muted mb-0 fs-5 text-muted">Dispatcher 1</p>
                         </div>
                     </div>
                     <div>
@@ -26,11 +26,11 @@ const MyTeam = () => {
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <div className="d-flex align-items-center">
                         <div>
-                            <Image src="/images/avatar/avatar-2.jpg" className="rounded-circle avatar-md" alt="" />
+                            <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                         </div>
                         <div className="ms-3 ">
-                            <h5 className="mb-1">Anne Brewer</h5>
-                            <p className="text-muted mb-0 fs-5 text-muted">Senior UX Designer</p>
+                            <h5 className="mb-1">Jamil Musiala</h5>
+                            <p className="text-muted mb-0 fs-5 text-muted">Dispatcher 2</p>
                         </div>
                     </div>
                     <div>
@@ -42,11 +42,11 @@ const MyTeam = () => {
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <div className="d-flex align-items-center">
                         <div>
-                            <Image src="/images/avatar/avatar-3.jpg" className="rounded-circle avatar-md" alt="" />
+                            <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                         </div>
                         <div className="ms-3 ">
-                            <h5 className="mb-1">Richard Christmas</h5>
-                            <p className="text-muted mb-0 ">Front-End Engineer</p>
+                            <h5 className="mb-1">Shaikeh Muszaphar</h5>
+                            <p className="text-muted mb-0 ">Dispatcher 3</p>
                         </div>
                     </div>
                     <div>
@@ -58,11 +58,11 @@ const MyTeam = () => {
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex align-items-center">
                         <div>
-                            <Image src="/images/avatar/avatar-4.jpg" className="rounded-circle avatar-md" alt="" />
+                            <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                         </div>
                         <div className="ms-3 ">
-                            <h5 className="mb-1">Nicholas Binder</h5>
-                            <p className="text-muted mb-0 fs-5 ">Content Marketing Manager</p>
+                            <h5 className="mb-1">Tommy Shelby</h5>
+                            <p className="text-muted mb-0 fs-5 ">Dispatcher 4</p>
                         </div>
                     </div>
                     <div>

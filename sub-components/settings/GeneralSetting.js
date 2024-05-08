@@ -10,8 +10,8 @@ import useMounted from 'hooks/useMounted';
 const GeneralSetting = () => {
   const hasMounted = useMounted();
   const countryOptions = [
-    { value: 'India', label: 'India' },
-    { value: 'US', label: 'US' },
+    { value: 'Malaysia', label: 'IMalaysia' },
+    { value: 'ID', label: 'ID' },
     { value: 'UK', label: 'UK' },
     { value: 'UAE', label: 'UAE' }
   ];
@@ -38,7 +38,7 @@ const GeneralSetting = () => {
               <Col md={9}>
                 <div className="d-flex align-items-center">
                   <div className="me-3">
-                    <Image src="/images/avatar/avatar-5.jpg" className="rounded-circle avatar avatar-lg" alt="" />
+                    <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar avatar-lg" alt="" />
                   </div>
                   <div>
                     <Button variant="outline-white" className="me-2" type="submit">Change </Button>

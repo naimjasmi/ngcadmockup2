@@ -99,7 +99,7 @@ const NavbarVertical = (props) => {
 			<SimpleBar style={{ maxHeight: '100vh' }}>
 				<div className="nav-scroller">
 					<Link href="/" className="navbar-brand">
-						<Image src="/images/brand/logo/emergency-phone.svg" alt="" />
+						<Image src="/images/brand/logo/emergensyslogo.png" alt="" style={{  maxHeight: '20px' }} />
 					</Link>
 				</div>
 				{/* Dashboard Menu */}

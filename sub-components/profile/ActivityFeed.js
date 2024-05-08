@@ -14,33 +14,33 @@ const ActivityFeed = () => {
                         
                         <div className="d-flex mb-5">
                             <div>
-                                <Image src="/images/avatar/avatar-6.jpg" className="rounded-circle avatar-md" alt="" />
+                                <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                             </div>
                             <div className="ms-3 ">
-                                <h5 className="mb-1">Dianna Smiley</h5>
-                                <p className="text-muted mb-2">Just create a new Project in Dashui...
+                                <h5 className="mb-1">Muazfar Anwar</h5>
+                                <p className="text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing
                                 </p>
                                 <p className="fs-5 mb-0">2m ago</p>
                             </div>
                         </div>
                         <div className="d-flex mb-5">
                             <div>
-                                <Image src="/images/avatar/avatar-7.jpg" className="rounded-circle avatar-md" alt="" />
+                                <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                             </div>
                             <div className="ms-3 ">
-                                <h5 className="mb-1">Irene Hargrove</h5>
-                                <p className="text-muted mb-2">Comment on Bootstrap Tutorial Says Hi, I m irene...
+                                <h5 className="mb-1">Syukor Adan</h5>
+                                <p className="text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing
                                 </p>
                                 <p className="fs-5 mb-0">1hour ago</p>
                             </div>
                         </div>
                         <div className="d-flex">
                             <div>
-                                <Image src="/images/avatar/avatar-9.jpg" className="rounded-circle avatar-md" alt="" />
+                                <Image src="/images/avatar/avatardefault.png" className="rounded-circle avatar-md" alt="" />
                             </div>
                             <div className="ms-3 ">
-                                <h5 className="mb-1">Trevor Bradley</h5>
-                                <p className="text-muted mb-2">Just share your article on Social Media..
+                                <h5 className="mb-1">Insyirah Dina</h5>
+                                <p className="text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing
                                 </p>
                                 <p className="mb-0 fs-5 text-muted">2month ago</p>
                             </div>
