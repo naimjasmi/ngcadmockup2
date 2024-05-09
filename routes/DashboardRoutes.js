@@ -51,29 +51,14 @@ export const DashboardMenu = [
 		title: 'Call Card',
 		icon: 'layout',
 		link: '/callCard'
-	},	
-	{
-		id: uuid(),
-		title: 'LAYOUTS & PAGES',
-		grouptitle: true
 	},
-	{
-		id: uuid(),
-		title: 'Pages',
-		icon: 'layers',
-		children: [
-			{ id: uuid(), link: '/pages/profile', name: 'Profile' },
-			{ id: uuid(), link: '/pages/settings', name: 'Settings'},
-			{ id: uuid(), link: '/not-found', name: '404 Error' }
-		]
-	},	
 	{
 		id: uuid(),
 		title: 'Authentication',
 		icon: 'lock',
 		children: [
 			{ id: uuid(), link: '/authentication/sign-in', name: 'Sign In' },
-			{ id: uuid(), link: '/authentication/sign-up', name: 'Sign Up' },
+			{ id: uuid(), link: '/authentication/sign-up', name: 'Role' },
 			{ id: uuid(), link: '/authentication/forget-password', name: 'Forget Password'}			
 		]
 	},

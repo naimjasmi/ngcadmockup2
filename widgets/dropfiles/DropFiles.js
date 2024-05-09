@@ -69,7 +69,7 @@ export const DropFiles = (props) => {
 		<section className="container">
 			<div {...getRootProps({ className: 'dropzone' })}>
 				<input {...getInputProps()} />
-				<p className="text-center">Drag 'n' drop some files here, or click to select files</p>
+				<p className="text-center">Drag drop some files here, or click to select files</p>
 			</div>
 			<aside style={thumbsContainer}>{thumbs}</aside>
 		</section>
