@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Col, Row, Card, Form, Button } from 'react-bootstrap';
 import { BsArrowRight } from 'react-icons/bs'; // Import the send icon
 
-const EventCode = () => {
+const Comment = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
@@ -57,4 +57,4 @@ const EventCode = () => {
     );
 };
 
-export default EventCode;
+export default Comment;
