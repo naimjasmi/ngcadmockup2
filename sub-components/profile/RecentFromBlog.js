@@ -34,9 +34,6 @@ const RecentFromBlog = () => {
           <Dropdown.Item eventKey="2">
             Another action
           </Dropdown.Item>
-          <Dropdown.Item eventKey="3">
-            Something else here
-          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );
@@ -67,36 +64,7 @@ const RecentFromBlog = () => {
             <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen disse var ius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
             <Image src="/images/blog/blog-img-1.jpg" className="rounded-3 w-100" alt="" />
           </div>
-          {/* icons */}
-          <div className="mb-4">
-            <span className="me-1 me-md-4"><i className="fe fe-heart"></i> <span>20 Like</span></span>
-            <span className="me-1 me-md-4"><i className="fe fe-message-square"></i> <span>12 Comment</span></span>
-            <span><i className="fe fe-share-2"></i><span> Share</span></span>
-          </div>
-          <div className="border-bottom border-top py-5 d-flex align-items-center mb-4">
-            <div className="avatar-group me-2 me-md-3">
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image alt="avatar"
-                  src="/images/avatar/avatardefault.png"
-                  className="rounded-circle" />
-              </span>
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image alt="avatar"
-                  src="/images/avatar/avatardefault.png"
-                  className="rounded-circle" />
-              </span>
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image alt="avatar"
-                  src="/images/avatar/avatardefault.png"
-                  className="rounded-circle" />
-              </span>
-            </div>
-            <div><span>You and 20 more liked this</span></div>
-          </div>
-          {/* row */}
+          
           <Row>
             <Col xl={1} lg={2} md={2} xs={12} className="mb-3 mb-lg-0">
               <Image src="/images/avatar/avatardefault.png" className="avatar avatar-md rounded-circle" alt="" />

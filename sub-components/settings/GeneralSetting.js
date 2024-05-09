@@ -2,7 +2,7 @@
 import { Col, Row, Form, Card, Button, Image } from 'react-bootstrap';
 
 // import widget as custom components
-import { FormSelect, DropFiles } from 'widgets';
+import { FormSelect } from 'widgets';
 
 // import hooks
 import useMounted from 'hooks/useMounted';
@@ -57,7 +57,7 @@ const GeneralSetting = () => {
                 {/* dropzone input */}
                 <div>
                   {hasMounted && <Form action="#" className="dropzone mb-3 py-10 border-dashed">
-                    <DropFiles />
+                    
                   </Form>}
                   <Button variant="outline-white" type="submit">Change </Button>
                 </div>
