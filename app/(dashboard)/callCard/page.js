@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Col, Row, Container, Card, Button, Modal } from 'react-bootstrap';
 import { CallerDetail, Geolocation, Comment } from 'sub-components';
+import Maps from '../pages/maps/page';
 
 // Define CallCard component
 const CallCard = () => {
@@ -43,7 +44,7 @@ const CallCard = () => {
           <Modal.Title>Geolocation</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Geolocation />
+          <Maps />
         </Modal.Body>
       </Modal>
 
