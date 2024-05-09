@@ -1,21 +1,135 @@
 'use client'
-// import node module libraries
-import Link from 'next/link';
-import { Col, Row, Container } from 'react-bootstrap';
-
-// import sub components
-import { PricingCard, PageHeading, FeatureLeftTopIcon } from 'widgets'
+import React, { useState } from 'react';
+import { Col, Row, Form, Button, Container } from 'react-bootstrap';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import MarkerIcon from 'leaflet/dist/images/marker-icon.png';
+import MarkerShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet';
 
 const Maps = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [markedMarkers, setMarkedMarkers] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const handleSearch = async () => {
+    if (searchQuery.trim() === '') return;
+
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${searchQuery}&format=json`);
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+
+  const handleResultClick = (result) => {
+    setSelectedLocation({
+      lat: parseFloat(result.lat),
+      lon: parseFloat(result.lon),
+      name: result.display_name
+    });
+  };
+
+  const handleMarkButtonClick = () => {
+    // Add the selected location to markedMarkers
+    if (selectedLocation) {
+      setMarkedMarkers([...markedMarkers, selectedLocation]);
+    }
+  };
+
+  const handleRemoveMarker = (index) => {
+    // Remove the marker at the specified index
+    const updatedMarkers = [...markedMarkers];
+    updatedMarkers.splice(index, 1);
+    setMarkedMarkers(updatedMarkers);
+  };
+
   return (
-    <Container fluid className="p-6">
-      {/* Page Heading */}
-      <PageHeading heading="Maps" />
-      <div className="py-8">
-        
-      </div>
+    <Container fluid>
+      <Row className="mb-3 mt-3">
+          <Col>
+            <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
+              <Row>
+                <Col xl={8} lg={8} md={8} xs={4}>
+                  <Form.Group>
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for a location..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col xl={4} lg={4} md={4} xs={4}>
+                  <Button variant="primary" type="submit">Search</Button>
+                </Col>
+              </Row>
+            </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div style={{ width: '100%', height: 'calc(90vh - 80px)' }}>
+              <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "100%" }}>
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {markedMarkers.map((marker, index) => (
+                  <Marker
+                    key={`marked-${index}`}
+                    position={[marker.lat, marker.lon]}
+                    icon={new L.Icon({
+                      iconUrl: MarkerIcon.src,
+                      iconRetinaUrl: MarkerIcon.src,
+                      iconSize: [25, 41],
+                      iconAnchor: [12.5, 41],
+                      popupAnchor: [0, -41],
+                      shadowUrl: MarkerShadow.src,
+                      shadowSize: [41, 41],
+                    })}
+                  >
+                    <Popup>
+                      <div>
+                        {marker.name}
+                        <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
+                      </div>
+                    </Popup>
+                  </Marker>
+                ))}
+                {searchResults.map(result => (
+                  <Marker
+                    key={result.place_id}
+                    position={[parseFloat(result.lat), parseFloat(result.lon)]}
+                    eventHandlers={{
+                      click: () => handleResultClick(result)
+                    }}
+                    icon={new L.Icon({
+                      iconUrl: MarkerIcon.src,
+                      iconRetinaUrl: MarkerIcon.src,
+                      iconSize: [25, 41],
+                      iconAnchor: [12.5, 41],
+                      popupAnchor: [0, -41],
+                      shadowUrl: MarkerShadow.src,
+                      shadowSize: [41, 41],
+                    })}
+                  >
+                    <Popup>
+                      <div>
+                        {result.display_name}
+                        <Button className='m-2' onClick={handleMarkButtonClick} size="sm">Mark</Button>
+                      </div>
+                    </Popup>
+                  </Marker>
+                ))}
+              </MapContainer>
+            </div>
+          </Col>
+        </Row>
     </Container>
   )
 }
 
-export default Maps
+export default Maps;
