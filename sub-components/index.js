@@ -25,6 +25,7 @@ import Preferences from 'sub-components/settings/Preferences';
 import CallerDetail from 'sub-components/callCard/CallerDetail';
 import Comment from 'sub-components/callCard/Comment';
 import Geolocation from 'sub-components/callCard/Geolocation';
+import { DropFiles } from 'widgets/dropfiles/DropFiles';
 
 
 export {
@@ -38,6 +39,8 @@ export {
    ProfileHeader,
    ProjectsContributions,
    RecentFromBlog,
+   DropFiles,
+
 
    DeleteAccount, 
    EmailSetting,  
