@@ -31,6 +31,11 @@ const CallCard = () => {
           </Card>
         </Col>
       </Row>
+      <Row className="justify-content-center">
+      <Col xl={12} lg={12} md={12} xs={12}>
+          <CallerDetail />
+        </Col>
+      </Row>
 
       {/* Geolocation modal */}
       <Modal show={showModal} onHide={toggleModal} centered size="xl">

@@ -5,7 +5,7 @@ export const TeamsData = [
        email : "ranjit12@yahoo.com",
        role: "Dispatcher",
        lastActivity: '3 May, 2023',
-       image:'/images/avatar/avatar-2.jpg' 
+       image:'/images/avatar/avatardefault.png' 
     },
     {
         id:2,
@@ -13,7 +13,7 @@ export const TeamsData = [
         email : "syaz@gmail.com",
         role: "Dispatch Supervisor",
         lastActivity: 'Today',
-        image:'/images/avatar/avatar-1.jpg' 
+        image:'/images/avatar/avatardefault.png' 
      },
      {
         id:3,
@@ -21,7 +21,7 @@ export const TeamsData = [
         email : "33aisyah@gmail.com",
         role: "Dispatcher",
         lastActivity: 'Yesterday',
-        image:'/images/avatar/avatar-3.jpg' 
+        image:'/images/avatar/avatardefault.png' 
      },
      {
         id:4,
@@ -29,7 +29,7 @@ export const TeamsData = [
         email : "khaiazman@gmail.com",
         role: "Dispatcher",
         lastActivity: '3 May, 2023',
-        image:'/images/avatar/avatar-4.jpg' 
+        image:'/images/avatar/avatardefault.png' 
      },
      {
         id:3,
@@ -37,7 +37,7 @@ export const TeamsData = [
         email : "amrul@gmail.com",
         role: "Call Taker",
         lastActivity: '3 May, 2023',
-        image:'/images/avatar/avatar-5.jpg' 
+        image:'/images/avatar/avatardefault.png' 
      },
      {
         id:4,
@@ -45,7 +45,7 @@ export const TeamsData = [
         email : "farhanibrahim@gmail.com",
         role: "Call Taker",
         lastActivity: '3 May, 2023',
-        image:'/images/avatar/avatar-6.jpg' 
+        image:'/images/avatar/avatardefault.png' 
      }
 ];
 export default TeamsData;

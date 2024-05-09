@@ -71,7 +71,7 @@ const Geolocation = () => {
         </Row>
         <Row>
           <Col>
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "660px" }}>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "668px" }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
