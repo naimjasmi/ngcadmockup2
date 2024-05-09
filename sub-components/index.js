@@ -23,7 +23,7 @@ import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
 import CallerDetail from 'sub-components/callCard/CallerDetail';
-import EventCode from 'sub-components/callCard/EventCode';
+import Comment from 'sub-components/callCard/Comment';
 import Geolocation from 'sub-components/callCard/Geolocation';
 
 
@@ -45,6 +45,6 @@ export {
    Notifications, 
    Preferences,
    CallerDetail,
-   EventCode,
+   Comment,
    Geolocation
 };

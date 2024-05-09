@@ -2,7 +2,7 @@
 // Import necessary modules
 import React, { useState } from 'react';
 import { Col, Row, Container, Card, Button, Modal } from 'react-bootstrap';
-import { CallerDetail, Geolocation, EventCode } from 'sub-components';
+import { CallerDetail, Geolocation, Comment } from 'sub-components';
 
 // Define CallCard component
 const CallCard = () => {
@@ -16,7 +16,7 @@ const CallCard = () => {
       {/* CallerDetail component */}
       <Row className="justify-content-center">
         <Col xl={2} lg={6} md={6} xs={12}>
-          <EventCode />
+          <Comment />
         </Col>
         <Col xl={6} lg={6} md={6} xs={12}>
           <CallerDetail />
