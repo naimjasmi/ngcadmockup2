@@ -22,11 +22,14 @@ import EmailSetting from 'sub-components/settings/EmailSetting';
 import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
+
+import DropFiles  from 'widgets/dropfiles/DropFiles';
+
+// sub components for /callCard
 import CallerDetail from 'sub-components/callCard/CallerDetail';
 import Comment from 'sub-components/callCard/Comment';
 import Geolocation from 'sub-components/callCard/Geolocation';
-import { DropFiles } from 'widgets/dropfiles/DropFiles';
-
+import Resource from 'sub-components/callCard/Resource';
 
 export {
    ActiveProjects,
@@ -49,5 +52,6 @@ export {
    Preferences,
    CallerDetail,
    Comment,
-   Geolocation
+   Geolocation,
+   Resource
 };
