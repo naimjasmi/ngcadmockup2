@@ -13,6 +13,7 @@ const Resource = () => {
         { value: 'All Fire Resources', label: 'All Fire Resources' },
         { value: 'All Police Resources', label: 'All Police Resources' }
     ];
+    
     return (
         <Row>
             <Col md={12} xs={12}>
