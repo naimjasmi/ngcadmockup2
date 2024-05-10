@@ -8,18 +8,26 @@ const Comment = () => {
 
     const handleSendMessage = () => {
         if (newMessage.trim() === '') return;
-        setMessages([...messages, { text: newMessage, sender: 'user' }]);
+        const currentTime = new Date().toLocaleString(); // Get current time
+        setMessages([...messages, { text: newMessage, sender: 'user', time: currentTime }]);
         setNewMessage('');
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent the default behavior of the Enter key
+            handleSendMessage(); // Call the sendMessage function
+        }
     };
 
     return (
         <Col xl={12} lg={12} md={12} xs={12}>
-            <Card>
+            <Card style={{ height: '815px', overflowY: 'auto' }}> {/* Set a fixed height and enable vertical scrolling */}
                 <Card.Body>
                     <div className="mb-3">
                         <h4 className="mb-1">Comment</h4>
                     </div>
-                    <div className="max-h-96 overflow-y-auto">
+                    <div>
                         {messages.map((message, index) => (
                             <div
                                 key={index}
@@ -27,7 +35,8 @@ const Comment = () => {
                                     message.sender === 'user' ? 'bg-green-200 self-end' : 'bg-gray-200 self-start'
                                 }`}
                             >
-                                {message.text}
+                                <p className="mb-0">{message.text}</p>
+                                <small className="text-muted">{message.time}</small>
                             </div>
                         ))}
                     </div>
@@ -39,6 +48,7 @@ const Comment = () => {
                                     placeholder="Add Comment..."
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
+                                    onKeyPress={handleKeyPress} // Call handleKeyPress on key press
                                     className="w-full pr-12" // Added pr-12 to accommodate icon
                                 />
                                 <Button
