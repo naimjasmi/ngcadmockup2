@@ -13,7 +13,7 @@ const Resource = () => {
         { value: 'All Fire Resources', label: 'All Fire Resources' },
         { value: 'All Police Resources', label: 'All Police Resources' }
     ];
-    
+
     return (
         <Row>
             <Col md={12} xs={12}>
@@ -44,7 +44,9 @@ const Resource = () => {
                                 <th>Res.</th>
                                 <th>Status</th>
                                 <th>Last Status Time</th>
-                                <th>Assigned Unit</th>
+                                <th>Type</th>
+                                <th>Department</th>
+                                <th>Station Code</th>
                                 <th>Progress</th>
                             </tr>
                         </thead>
@@ -64,20 +66,9 @@ const Resource = () => {
                                         </td>
                                         <td className="align-middle"><span className={`badge bg-${item.priorityBadgeBg}`}>{item.priority}</span></td>
                                         <td className="align-middle">{item.datime}</td>
-                                        <td className="align-middle">
-                                            <div className="avatar-group">
-                                                {item.members.map((avatar, avatarIndex) => {
-                                                    return (
-                                                        <span className="avatar avatar-sm" key={avatarIndex}>
-                                                            <Image alt="avatar" src={avatar.image} className="rounded-circle" />
-                                                        </span>
-                                                    )
-                                                })}
-                                                <span className="avatar avatar-sm avatar-primary">
-                                                    <span className="avatar-initials rounded-circle fs-6">+1</span>
-                                                </span>
-                                            </div>
-                                        </td>
+                                        <td className="align-middle">{item.type }</td>
+                                        <td className="align-middle">{item.stCode }</td>
+                                        <td className="align-middle">{item.department }</td>
                                         <td className="align-middle text-dark">
                                             <div className="float-start me-3">{item.progress}%</div>
                                             <div className="mt-2">

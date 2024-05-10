@@ -4,88 +4,78 @@ export const ResourceData = [
        resName : "PO 777",
        priority : "Available",
        priorityBadgeBg : 'success',
+       type : "External Service",
        datime: "2024-05-10 10:29:53",
-       progress: 15,
+       progress: 0,
+       department: "DCC AMPANG JAYA",
        brandLogo:'/images/brand/police-logo.svg',
        brandLogoBg : 'bg-white',
-       members:[
-        {image:'images/avatar/avatardefault.png'},
-        {image:'images/avatar/avatardefault.png'}
-       ] 
+       stCode : "A4" 
     },
     {
         id:2,
         resName  : "PO 757",
         priority : "Unavailable",
         priorityBadgeBg : 'danger',
+        type : "First Responder",
         datime : "2024-05-10 14:44:35",
-        progress: 35,
+        progress: 0,
+        department: "DCC SHAH ALAM",
         brandLogo:'/images/brand/police-logo.svg',
         brandLogoBg : 'bg-white',
-        members:[
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'}
-        ] 
+        stCode : "A8"
      },
      {
         id:3,
         resName  : "PO 007",
         priority : "Available",
         priorityBadgeBg : 'success',
+        type : " Traffic First Responder",
         datime : "2024-05-10 09:30:09",
-        progress: 75,
+        progress: 0,
+        department: "DCC PUTRAJAYA",
         brandLogo:'/images/brand/police-logo.svg',
         brandLogoBg : 'bg-white',
-        members:[
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'}
-        ] 
+        stCode : "B1" 
      },
      {
         id:4,
         resName  : "MEDIC 401",
         priority : "Available",
         priorityBadgeBg : 'success',
+        type : "AMB-B",
         datime : "2024-05-10 03:39:40",
-        progress: 63,
+        progress: 0,
+        department: "HKL",
         brandLogo:'/images/brand/ambulance-logo.svg',
         brandLogoBg : 'bg-white',
-        members:[
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'}
-        ] 
+        stCode : "HKL" 
      },
      {
         id:3,
         resName  : "MEDIC 402",
         priority : "Dispatched",
         priorityBadgeBg : 'warning',
+        type : "External Service",
         datime : "2024-05-10 12:59:14",
-        progress: 100,
+        progress: 20,
+        department: "HKL",
         brandLogo:'/images/brand/ambulance-logo.svg',
         brandLogoBg : 'bg-white',
-        members:[
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'}
-        ] 
+        stCode : "HKL"
      },
      {
         id:4,
         resName  : "FI 302",
         priority : "At Scene",
         priorityBadgeBg : 'info',
+        type : "First Responder",
         datime : "2024-05-09 11:43:12",
-        progress: 75,
+        progress: 50,
+        department: "JBPM",
         brandLogo:'/images/brand/firefighter-logo.svg',
         brandLogoBg : 'bg-white',
-        members:[
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'},
-            {image:'images/avatar/avatardefault.png'}
-        ] 
+        stCode : "WBPUJY"
      }
 ];
 export default ResourceData;
