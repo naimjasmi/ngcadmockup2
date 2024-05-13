@@ -3,7 +3,7 @@ import { Col, Row, Card } from 'react-bootstrap';
 
 const AboutMe = () => {
     return (
-        <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
+        <>
             {/* card */}
             <Card>
                 {/* card body */}
@@ -37,7 +37,7 @@ const AboutMe = () => {
                     </Row>
                 </Card.Body>
             </Card>
-        </Col>
+        </>
     )
 }
 

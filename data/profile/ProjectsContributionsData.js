@@ -2,7 +2,7 @@ export const ProjectsContributionsData = [
     {
         id: 1,
         projectName: "Incident 5",
-        description: "Project description and details about...",
+        description: "Case description and details about...",
         brandLogo: '/images/brand/police-logo.svg',
         brandLogoBg: 'bg-white',
         members: [
@@ -14,7 +14,7 @@ export const ProjectsContributionsData = [
     {
         id: 2,
         projectName: "Incident 4",
-        description: "Project description and details about...",
+        description: "Case description and details about...",
         brandLogo: '/images/brand/firefighter-logo.svg',
         brandLogoBg: 'bg-white',
         members: [
@@ -25,7 +25,7 @@ export const ProjectsContributionsData = [
     {
         id: 3,
         projectName: "Incident 3",
-        description: "Project description and details about...",
+        description: "Case description and details about...",
         brandLogo: '/images/brand/police-logo.svg',
         brandLogoBg: 'bg-white',
         members: [
@@ -37,7 +37,7 @@ export const ProjectsContributionsData = [
     {
         id: 4,
         projectName: "Incident 2",
-        description: "Project description and details about...",
+        description: "Case description and details about...",
         brandLogo: '/images/brand/ambulance-logo.svg',
         brandLogoBg: 'bg-white',
         members: [
@@ -48,7 +48,7 @@ export const ProjectsContributionsData = [
     {
         id: 5,
         projectName: "Incident 1",
-        description: "Project description and details about...",
+        description: "Case description and details about...",
         brandLogo: '/images/brand/ambulance-logo.svg',
         brandLogoBg: 'bg-white',
         members: [

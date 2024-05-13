@@ -60,7 +60,7 @@ export const ActiveProjectsData = [
      {
         id:3,
         projectName : "WPDW23 - 00033",
-        priority : "Track",
+        priority : "Normal",
         priorityBadgeBg : 'success',
         hours: 108,
         progress: 100,

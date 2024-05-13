@@ -18,7 +18,6 @@ import {
 const Profile = () => {
   return (
     <Container fluid className="p-6">
-      {/* Page Heading */}
 
       {/* Profile Header  */}
       <ProfileHeader />
@@ -26,23 +25,22 @@ const Profile = () => {
       {/* content */}
       <div className="py-6">
         <Row>
-
-          {/* About Me */}
-          <AboutMe />
-
-          {/* Projects Contributions */}
-          <ProjectsContributions />
-
-          {/* Recent From Blog */}
-          <RecentFromBlog />
-
           <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
-
+            {/* About Me */}
+            <AboutMe />
+          </Col>
+          <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
             {/* My Team */}
             <MyTeam />
+          </Col>
+          {/* Recent From Blog 
+          <RecentFromBlog /> */}
 
-            {/* Activity Feed */}
-            <ActivityFeed />
+          <Col xl={12} lg={12} md={12} xs={12} className="mb-6">
+            <ProjectsContributions />
+
+            {/* Activity Feed 
+            <ActivityFeed /> */}
 
           </Col>
         </Row>
