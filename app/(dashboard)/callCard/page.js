@@ -24,12 +24,13 @@ const CallCard = () => {
         </Col>
         {/* Button to open modal */}
         <Col xl={4} lg={12} md={12} xs={12}>
-          <Card>
+        <Resource />
+          {/*<Card>
             <Card.Body>
               <Geolocation />
               <Button className="mt-2" variant="outline-secondary" onClick={toggleModal}>Open Map</Button>
             </Card.Body>
-          </Card>
+          </Card> */}
         </Col>
       </Row>
       <Row className="justify-content-center">
@@ -38,7 +39,7 @@ const CallCard = () => {
         </Col>
       </Row>
 
-      {/* Geolocation modal */}
+      {/* Geolocation modal 
       <Modal show={showModal} onHide={toggleModal} centered size="xl">
         <Modal.Header closeButton>
           <Modal.Title>Geolocation</Modal.Title>
@@ -46,7 +47,7 @@ const CallCard = () => {
         <Modal.Body>
           <Maps />
         </Modal.Body>
-      </Modal>
+      </Modal> */}
 
       {/* Custom CSS for larger modal */}
       <style jsx global>{`

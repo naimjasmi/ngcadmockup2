@@ -14,6 +14,11 @@ const Resource = () => {
         { value: 'All Police Resources', label: 'All Police Resources' }
     ];
 
+    const handleDispatch = (item) => {
+        // Dispatch action or perform any other action for the specific item
+        console.log("Dispatch action for:", item);
+    };
+
     return (
         <Row>
             <Col md={12} xs={12}>
@@ -44,10 +49,7 @@ const Resource = () => {
                                 <th>Res.</th>
                                 <th>Status</th>
                                 <th>Last Status Time</th>
-                                <th>Type</th>
-                                <th>Department</th>
-                                <th>Station Code</th>
-                                <th>Progress</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,14 +68,12 @@ const Resource = () => {
                                         </td>
                                         <td className="align-middle"><span className={`badge bg-${item.priorityBadgeBg}`}>{item.priority}</span></td>
                                         <td className="align-middle">{item.datime}</td>
-                                        <td className="align-middle">{item.type }</td>
-                                        <td className="align-middle">{item.stCode }</td>
-                                        <td className="align-middle">{item.department }</td>
-                                        <td className="align-middle text-dark">
-                                            <div className="float-start me-3">{item.progress}%</div>
-                                            <div className="mt-2">
-                                                <ProgressBar now={item.progress} style={{ height: '5px' }} />
-                                            </div>
+                                        <td className="align-middle">
+                                            {item.priority === "Available" ? (
+                                                <button className="btn btn-sm btn-primary" onClick={() => handleDispatch(item)}>Dispatch</button>
+                                            ) : (
+                                                <button className="btn btn-sm btn-secondary" disabled>Dispatch</button>
+                                            )}
                                         </td>
                                     </tr>
                                 )
@@ -89,4 +89,4 @@ const Resource = () => {
     )
 }
 
-export default Resource
+export default Resource;
