@@ -43,7 +43,7 @@ const ProjectsContributions = () => {
     };
 
     return (
-        <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
+        <Col xl={12} lg={12} md={12} xs={12} className="mb-6">
             <Card>
                 <Card.Body>
                     <Card.Title as="h4">Case Contributions</Card.Title>

@@ -17,7 +17,7 @@ const ActiveProjects = () => {
                         <thead className="table-light">
                             <tr>
                                 <th>Incident name</th>
-                                <th>Handling Time</th>
+                                <th>Handling Time (Min)</th>
                                 <th>priority</th>
                                 <th>Assigned Unit</th>
                                 <th>Progress</th>
