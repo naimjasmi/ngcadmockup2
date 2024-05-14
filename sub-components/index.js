@@ -30,6 +30,7 @@ import CallerDetail from 'sub-components/callCard/CallerDetail';
 import Comment from 'sub-components/callCard/Comment';
 import Geolocation from 'sub-components/callCard/Geolocation';
 import Resource from 'sub-components/callCard/Resource';
+import AllIncident from 'sub-components/callCard/AllIncident';
 
 export {
    ActiveProjects,
@@ -53,5 +54,6 @@ export {
    CallerDetail,
    Comment,
    Geolocation,
-   Resource
+   Resource,
+   AllIncident
 };

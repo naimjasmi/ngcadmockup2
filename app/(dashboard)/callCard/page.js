@@ -2,7 +2,7 @@
 // Import necessary modules
 import React, { useState } from 'react';
 import { Col, Row, Container, Card, Button, Modal } from 'react-bootstrap';
-import { CallerDetail, Geolocation, Comment, Resource } from 'sub-components';
+import { CallerDetail, Geolocation, Comment, Resource, AllIncident } from 'sub-components';
 import Maps from '../pages/maps/page';
 
 // Define CallCard component
@@ -22,7 +22,6 @@ const CallCard = () => {
         <Col xl={6} lg={6} md={6} xs={12}>
           <CallerDetail />
         </Col>
-        {/* Button to open modal */}
         <Col xl={4} lg={12} md={12} xs={12}>
         <Resource />
           {/*<Card>
@@ -35,7 +34,7 @@ const CallCard = () => {
       </Row>
       <Row className="justify-content-center">
       <Col xl={12} lg={12} md={12} xs={12}>
-          <Resource />
+          <AllIncident/>
         </Col>
       </Row>
 
