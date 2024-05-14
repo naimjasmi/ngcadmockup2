@@ -22,7 +22,7 @@ const Comment = () => {
 
     return (
         <Col xl={12} lg={12} md={12} xs={12}>
-            <Card style={{ height: '815px', overflowY: 'auto' }}> {/* Set a fixed height and enable vertical scrolling */}
+            <Card style={{ height: '752px', overflowY: 'auto' }}> {/* Set a fixed height and enable vertical scrolling */}
                 <Card.Body>
                     <div className="mb-3">
                         <h4 className="mb-1">Comment</h4>

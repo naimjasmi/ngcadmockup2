@@ -98,7 +98,7 @@ const Resource = () => {
                             </Col>
                         </Row>
                     </Card.Header>
-                    <div style={{ maxHeight: '690px', overflowY: 'auto' }}>
+                    <div style={{ maxHeight: '626px', overflowY: 'auto' }}>
                         <Table responsive className="text-nowrap mb-0">
                             <thead className="table-light">
                                 <tr>
