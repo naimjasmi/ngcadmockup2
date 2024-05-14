@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Table } from 'react-bootstrap';
 
-const AllIncident = ({ incidentData, callerFormData }) => {
+const AllIncident = ({ incidentDataList }) => {
     return (
         <Card className="mb-4">
             <Card.Body>
@@ -20,15 +20,15 @@ const AllIncident = ({ incidentData, callerFormData }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {callerFormData && (
-                            <tr>
-                                <td>{callerFormData.nature}</td>
-                                <td>{callerFormData.city}</td>
-                                <td>{callerFormData.riskLevel}</td>
-                                <td>{callerFormData.fullName}</td>
-                                <td>{callerFormData.phoneNo}</td>
+                        {incidentDataList.map((incident, index) => (
+                            <tr key={index}>
+                                <td>{incident.nature}</td>
+                                <td>{incident.city}</td>
+                                <td>{incident.riskLevel}</td>
+                                <td>{incident.fullName}</td>
+                                <td>{incident.phoneNo}</td>
                             </tr>
-                        )}
+                        ))}
                     </tbody>
                 </Table>
             </Card.Body>

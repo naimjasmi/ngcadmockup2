@@ -6,6 +6,7 @@ import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components'; /
 const CallCard = () => {
   const [incidentData, setIncidentData] = useState(null);
   const [callerFormData, setCallerFormData] = useState(null);
+  const [incidentDataList, setIncidentDataList] = useState([]);
 
   const handleIncidentData = (data) => {
     setIncidentData(data);
@@ -13,7 +14,7 @@ const CallCard = () => {
 
   const handleFormSubmit = (formData) => {
     // Set caller form data
-    setCallerFormData(formData);
+    setIncidentDataList([...incidentDataList, formData]);
     
     // Update incident data if needed
     const updatedIncidentData = {
@@ -39,7 +40,7 @@ const CallCard = () => {
       <Row className="justify-content-center">
         <Col xl={12} lg={12} md={12} xs={12}>
           {/* Pass incidentData and callerFormData to AllIncident */}
-          <AllIncident incidentData={incidentData} callerFormData={callerFormData} />
+          <AllIncident incidentDataList={incidentDataList} />
         </Col>
       </Row>
     </Container>
