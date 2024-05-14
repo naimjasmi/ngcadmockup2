@@ -24,7 +24,6 @@ const CallerDetail = ({ onFormSubmit }) => {
     intersection: '',
     apartment: '',
     city: '',
-    callerPostalCode: '',
     phone: ''
   });
 
@@ -35,9 +34,39 @@ const CallerDetail = ({ onFormSubmit }) => {
     { value: '3', label: '3' },
     { value: '4', label: '4' }
   ];
+  const provinceOptions = [
+    { value: '', label: 'Province' }, // Placeholder option
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' }
+  ];
+  const risklevelOptions = [
+    { value: '', label: 'Risk Level' }, // Placeholder option
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' }
+  ];
   
   const proximityOptions = [
     { value: '', label: 'Proximity' }, // Placeholder option
+    { value: 'At the address', label: 'At the address' },
+    { value: 'One', label: 'One' },
+    { value: 'Two', label: 'Two' },
+    { value: 'Three', label: 'Three' }
+  ];
+
+  const natureCodeOptions = [
+    { value: '', label: 'Nature Code' }, // Placeholder option
+    { value: 'At the address', label: 'At the address' },
+    { value: 'One', label: 'One' },
+    { value: 'Two', label: 'Two' },
+    { value: 'Three', label: 'Three' }
+  ];
+  
+  const priorityOptions = [
+    { value: '', label: 'Priority' }, // Placeholder option
     { value: 'At the address', label: 'At the address' },
     { value: 'One', label: 'One' },
     { value: 'Two', label: 'Two' },
@@ -85,7 +114,7 @@ const CallerDetail = ({ onFormSubmit }) => {
                 ))}
               </Form.Control>
             </Col>
-            <Col xl={7} md={12} className="mb-3">
+            <Col xl={5} md={12} className="mb-3">
               <Form.Control type="text" placeholder="Business Place / Location (Administrative Division)" id="fullName" onChange={handleChange} required />
             </Col>
             <Col xl={2} md={12} className="mb-3">
@@ -95,19 +124,24 @@ const CallerDetail = ({ onFormSubmit }) => {
                 ))}
               </Form.Control>
             </Col>
+            <Col xl={2} md={12} className="mb-3">
+              <Form.Control as={FormSelect} placeholder="Province" id="province" onChange={handleChange}>
+                {provinceOptions.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </Form.Control>
+            </Col>
           </Row>
           <Row>
-            <Col xl={3} md={12} className="mb-3">
+            <Col xl={1} md={12} className="mb-3">
               <Form.Control type="text" placeholder="St. No" id="streetNo" onChange={handleChange} required />
             </Col>
-            <Col xl={6} md={12} className="mb-3">
+            <Col xl={4} md={12} className="mb-3">
               <Form.Control type="text" placeholder="Street / Intersection" id="street" onChange={handleChange} required />
             </Col>
-            <Col xl={3} md={12} className="mb-3">
+            <Col xl={2} md={12} className="mb-3">
               <Form.Control type="text" placeholder="Postal Code" id="postalCode" onChange={handleChange} required />
             </Col>
-          </Row>
-          <Row>
             <Col xl={2} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="Precint" id="precint" onChange={handleChange}>
                 {precintOptions.map((option) => (
@@ -115,23 +149,17 @@ const CallerDetail = ({ onFormSubmit }) => {
                 ))}
               </Form.Control>
             </Col>
-            <Col xl={5} md={12} className="mb-3">
+            <Col xl={3} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="City" id="City" onChange={handleChange}>
                 {cityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
-            <Col xl={2} md={6} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Province" id="province" onChange={handleChange}>
-                {levelOptions.map((option) => (
-                  <option key={option.value} value={option.value}>{option.label}</option>
-                ))}
-              </Form.Control>
-            </Col>
-            <Col xl={3} md={6} className="mb-3">
-              <Form.Control type="text" placeholder="Postal Code" id="callerPostalCode" onChange={handleChange} required />
-            </Col>
+          </Row>
+          <Row>
+            
+            
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
@@ -154,7 +182,7 @@ const CallerDetail = ({ onFormSubmit }) => {
             </Col>
             <Col xl={2} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="Risk Level" id="riskLevel" onChange={handleChange}>
-                {levelOptions.map((option) => (
+                {risklevelOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
@@ -166,14 +194,14 @@ const CallerDetail = ({ onFormSubmit }) => {
           <Row>
             <Col xl={8} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="Nature" id="nature" onChange={handleChange}>
-                {proximityOptions.map((option) => (
+                {natureCodeOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={4} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="Priority" id="priority" onChange={handleChange}>
-                {proximityOptions.map((option) => (
+                {priorityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
