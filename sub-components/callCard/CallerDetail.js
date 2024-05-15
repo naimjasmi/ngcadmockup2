@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Form, Button, Col, Row, FormSelect } from 'react-bootstrap';
 
 const CallerDetail = ({ onFormSubmit }) => {
@@ -117,12 +117,21 @@ const CallerDetail = ({ onFormSubmit }) => {
     setFormData({ ...formData, [id]: value });
   };
 
+  const [callCardNo, setCallCardNo] = useState('');
+
+  useEffect(() => {
+    // Generate call card number when the component mounts
+    const generatedCallCardNo = generateCallCardNo();
+    setCallCardNo(generatedCallCardNo);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Generate a random Call Card No.
-    const callcardNo = generateCallCardNo();
+    const generatedCallCardNo = generateCallCardNo();
+    setCallCardNo(generatedCallCardNo); // Set the call card number state
     // Merge with form data
-    const formDataWithId = { ...formData, callcardNo };
+    const formDataWithId = { ...formData, callcardNo: generatedCallCardNo };
     // Call onFormSubmit and pass the form data
     onFormSubmit(formDataWithId); 
     console.log(formDataWithId); // For demonstration
@@ -142,7 +151,7 @@ const CallerDetail = ({ onFormSubmit }) => {
     <Card className="mb-4">
       <Card.Body>
         <div className="mb-3">
-          <h4 className="mb-1">Incident</h4>
+        <h4 className="mb-1">Call Card  {callCardNo}</h4>
         </div>
         <Form onSubmit={handleSubmit}>
           <Row>
