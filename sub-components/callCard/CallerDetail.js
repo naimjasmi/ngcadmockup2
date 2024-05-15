@@ -95,7 +95,7 @@ const CallerDetail = ({ onFormSubmit }) => {
   const priorityOptions = [
     { value: '', label: 'Priority' }, // Placeholder option
     { value: 'Low', label: 'Low' },
-    { value: 'Moderate', label: 'Moderate' },
+    { value: 'Medium', label: 'Medium' },
     { value: 'High', label: 'High' },
     { value: 'Very High', label: 'Very High' }
   ];
