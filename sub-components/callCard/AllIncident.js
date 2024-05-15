@@ -15,6 +15,7 @@ const AllIncident = ({ incidentDataList }) => {
                                 <th>Call Card No.</th>
                                 <th>Nature</th>
                                 <th>Incident Location</th>
+                                <th>Direction</th>
                                 <th>Risk Level</th>
                                 <th>Priority</th>
                                 <th>Caller Name</th>
@@ -28,7 +29,8 @@ const AllIncident = ({ incidentDataList }) => {
                                     <td>{incident.nature}</td>
                                     <td>
                                         {`No.
-                                        ${incident.streetNo}
+                                        ${incident.streetNo},
+                                        ${incident.level}
                                         ${incident.street}, 
                                         ${incident.precint}, 
                                         ${incident.postalCode}, 
@@ -36,6 +38,7 @@ const AllIncident = ({ incidentDataList }) => {
                                         ${incident.province}
                                         `}
                                     </td>
+                                    <td>{incident.direction}</td>
                                     <td>{incident.riskLevel}</td>
                                     <td>{incident.priority}</td>
                                     <td>{incident.name}</td>
