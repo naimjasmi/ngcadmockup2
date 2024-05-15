@@ -8,13 +8,14 @@ const AllIncident = ({ incidentDataList }) => {
                 <div className="mb-3">
                     <h4 className="mb-1">All Incidents</h4>
                 </div>
+                <div style={{ maxHeight: '400px', overflowY: 'auto' }}> {/* Adjust maxHeight as needed */}
                 <Table responsive hover>
                     <thead>
                         <tr>
+                            <th>Call Card No.</th>
                             <th>Type</th>
                             <th>Location</th>
                             <th>Status</th>
-                            {/* Add additional columns for caller form data */}
                             <th>Caller Name</th>
                             <th>Caller Phone</th>
                         </tr>
@@ -22,15 +23,17 @@ const AllIncident = ({ incidentDataList }) => {
                     <tbody>
                         {incidentDataList.map((incident, index) => (
                             <tr key={index}>
+                                <td>{incident.callcardNo}</td>
                                 <td>{incident.nature}</td>
                                 <td>{incident.city}</td>
                                 <td>{incident.riskLevel}</td>
-                                <td>{incident.fullName}</td>
+                                <td>{incident.name}</td>
                                 <td>{incident.phoneNo}</td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
+                </div>
             </Card.Body>
         </Card>
     );
