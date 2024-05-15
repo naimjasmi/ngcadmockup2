@@ -4,9 +4,8 @@ import { Card, Form, Button, Col, Row, FormSelect } from 'react-bootstrap';
 const CallerDetail = ({ onFormSubmit }) => {
   const [formData, setFormData] = useState({
     callcardNo: '',
-    callcardNo: '',
-    fullName: '',
-    time: '',
+    building: '',
+    level: '',
     streetNo: '',
     street: '',
     postalCode: '',
@@ -30,10 +29,10 @@ const CallerDetail = ({ onFormSubmit }) => {
 
   const levelOptions = [
     { value: '', label: 'Level' }, // Placeholder option
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' }
+    { value: 'Level 1', label: 'Level 1' },
+    { value: 'Level 2', label: 'Level 2' },
+    { value: 'Level 3', label: 'Level 3' },
+    { value: 'Level 4', label: 'Level 4' }
   ];
   const directionOptions = [
     { value: '', label: 'Direction' }, // Placeholder option
@@ -76,10 +75,11 @@ const CallerDetail = ({ onFormSubmit }) => {
 
   const proximityOptions = [
     { value: '', label: 'Proximity' }, // Placeholder option
-    { value: 'At the address', label: 'At the address' },
-    { value: 'One', label: 'One' },
-    { value: 'Two', label: 'Two' },
-    { value: 'Three', label: 'Three' }
+    { value: 'At the location', label: 'At the location' },
+    { value: 'Near the location', label: 'Near the location' },
+    { value: 'Behind the location', label: 'Behind the location' },
+    { value: 'Adjacent to the location', label: 'Adjacent to the location' },
+    { value: 'Opposite the location', label: 'Opposite the location' }
   ];
 
   const natureCodeOptions = [
@@ -170,10 +170,10 @@ const CallerDetail = ({ onFormSubmit }) => {
               </Form.Control>
             </Col>
             <Col xl={5} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Business Place / Location (Administrative Division)" id="fullName" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="Business Place / Location (Administrative Division)" id="building" onChange={handleChange} />
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control as={FormSelect} defaultValue="Level" id="time" onChange={handleChange}>
+              <Form.Control as={FormSelect} defaultValue="Level" id="level" onChange={handleChange}>
                 {levelOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -213,8 +213,6 @@ const CallerDetail = ({ onFormSubmit }) => {
             </Col>
           </Row>
           <Row>
-
-
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
@@ -255,7 +253,7 @@ const CallerDetail = ({ onFormSubmit }) => {
               </Form.Control>
             </Col>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Priority" id="priority" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Priority" id="priority" onChange={handleChange} required>
                 {priorityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
