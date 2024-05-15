@@ -64,7 +64,7 @@ const CallerDetail = ({ onFormSubmit }) => {
     { value: 'Kuala Lumpur', label: 'Kuala Lumpur' },
     { value: 'Labuan', label: 'Labuan' },
     { value: 'Putrajaya', label: 'Putrajaya' }
-];
+  ];
 
   const risklevelOptions = [
     { value: '', label: 'Risk Level' }, // Placeholder option
@@ -73,7 +73,7 @@ const CallerDetail = ({ onFormSubmit }) => {
     { value: 'High', label: 'High' },
     { value: 'Very High', label: 'Very High' }
   ];
-  
+
   const proximityOptions = [
     { value: '', label: 'Proximity' }, // Placeholder option
     { value: 'At the address', label: 'At the address' },
@@ -84,32 +84,39 @@ const CallerDetail = ({ onFormSubmit }) => {
 
   const natureCodeOptions = [
     { value: '', label: 'Nature Code' }, // Placeholder option
-    { value: 'At the address', label: 'At the address' },
-    { value: 'One', label: 'One' },
-    { value: 'Two', label: 'Two' },
-    { value: 'Three', label: 'Three' }
+    { value: 'Fire', label: 'Fire' },
+    { value: 'Kidnapping', label: 'Kidnapping' },
+    { value: 'Robbery', label: 'Robbery' },
+    { value: 'Assault', label: 'Assault' },
+    { value: 'Burglary', label: 'Burglary' },
+    { value: 'Traffic Accident', label: 'Traffic Accident' },
   ];
-  
+
   const priorityOptions = [
     { value: '', label: 'Priority' }, // Placeholder option
-    { value: 'At the address', label: 'At the address' },
-    { value: 'One', label: 'One' },
-    { value: 'Two', label: 'Two' },
-    { value: 'Three', label: 'Three' }
+    { value: 'Low', label: 'Low' },
+    { value: 'Moderate', label: 'Moderate' },
+    { value: 'High', label: 'High' },
+    { value: 'Very High', label: 'Very High' }
   ];
-  
+
   const precintOptions = [
     { value: '', label: 'Precint' }, // Placeholder option
     { value: 'Precint2', label: 'Precint 2' },
     { value: 'Precint3', label: 'Precint 3' },
     { value: 'Precint4', label: 'Precint 4' },
   ];
-  
+
   const cityOptions = [
     { value: '', label: 'City' }, // Placeholder option
-    { value: 'ampang', label: 'AMPANG (SL)' },
-    { value: 'pj', label: 'PETALING JAYA (SL)' },
-    { value: 'puchong', label: 'PUCHONG (SL)' },
+    { value: 'Ampang', label: 'Ampang' },
+    { value: 'Petaling Jaya', label: 'Petaling Jaya' },
+    { value: 'Puchong', label: 'Puchong' },
+    { value: 'Kuala Lumpur', label: 'Kuala Lumpur' },
+    { value: 'Shah Alam', label: 'Shah Alam' },
+    { value: 'Subang Jaya', label: 'Subang Jaya' },
+    { value: 'Klang', label: 'Klang' },
+    { value: 'Cyberjaya', label: 'Cyberjaya' }
   ];
 
   const handleChange = (e) => {
@@ -133,7 +140,7 @@ const CallerDetail = ({ onFormSubmit }) => {
     // Merge with form data
     const formDataWithId = { ...formData, callcardNo: generatedCallCardNo };
     // Call onFormSubmit and pass the form data
-    onFormSubmit(formDataWithId); 
+    onFormSubmit(formDataWithId);
     console.log(formDataWithId); // For demonstration
   };
 
@@ -141,17 +148,17 @@ const CallerDetail = ({ onFormSubmit }) => {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let randomAlphabets = '';
     for (let i = 0; i < 3; i++) {
-        randomAlphabets += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+      randomAlphabets += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
     }
     const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit number
     return `${randomAlphabets}${randomNumber}`;
-};
+  };
 
   return (
     <Card className="mb-4">
       <Card.Body>
         <div className="mb-3">
-        <h4 className="mb-1">Call Card  {callCardNo}</h4>
+          <h4 className="mb-1">Call Card  {callCardNo}</h4>
         </div>
         <Form onSubmit={handleSubmit}>
           <Row>
@@ -206,8 +213,8 @@ const CallerDetail = ({ onFormSubmit }) => {
             </Col>
           </Row>
           <Row>
-            
-            
+
+
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
@@ -294,7 +301,7 @@ const CallerDetail = ({ onFormSubmit }) => {
               </Form.Control>
             </Col>
             <Col sm={4}>
-              <Form.Control type="text" placeholder="Postal Code" id="postalCode" onChange={handleChange}/>
+              <Form.Control type="text" placeholder="Postal Code" id="postalCode" onChange={handleChange} />
             </Col>
           </Row>
           <Row>
