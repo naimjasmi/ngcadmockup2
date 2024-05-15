@@ -4,13 +4,7 @@ import { Col, Row, Container } from 'react-bootstrap';
 import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components'; // Adjust the path as needed
 
 const CallCard = () => {
-  const [incidentData, setIncidentData] = useState(null);
-  const [callerFormData, setCallerFormData] = useState(null);
   const [incidentDataList, setIncidentDataList] = useState([]);
-
-  const handleIncidentData = (data) => {
-    setIncidentData(data);
-  };
 
   const handleFormSubmit = (formData) => {
     // Set caller form data
@@ -20,7 +14,6 @@ const CallCard = () => {
     const updatedIncidentData = {
       // Update the incident data based on formData or any other logic
     };
-    setIncidentData(updatedIncidentData);
   };
 
   return (
