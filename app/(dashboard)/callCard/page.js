@@ -14,7 +14,8 @@ const CallCard = () => {
 
   const handleFormSubmit = (formData) => {
     // Set caller form data
-    setIncidentDataList([...incidentDataList, formData]);
+    const updatedFormData = { ...formData, resource: resourceFieldValue }; // Include resource field
+    setIncidentDataList([...incidentDataList, updatedFormData]);
   };
 
 

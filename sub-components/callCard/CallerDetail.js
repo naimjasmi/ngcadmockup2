@@ -142,7 +142,6 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
     // Merge with form data
     const formDataWithId = { ...formData, callcardNo: generatedCallCardNo, resource: resourceFieldValue }; // Include resource field
     // Call onFormSubmit and pass the form data
-    
     onFormSubmit(formDataWithId);
     console.log(formDataWithId); // For demonstration
   };
