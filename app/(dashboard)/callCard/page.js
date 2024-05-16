@@ -5,16 +5,18 @@ import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components'; /
 
 const CallCard = () => {
   const [incidentDataList, setIncidentDataList] = useState([]);
+  const [resourceFieldValue, setResourceFieldValue] = useState('');
+
+  const updateResourceField = (resName) => {
+    console.log('Dispatched Resource:', resName);
+    setResourceFieldValue(resName);
+  };
 
   const handleFormSubmit = (formData) => {
     // Set caller form data
     setIncidentDataList([...incidentDataList, formData]);
-    
-    // Update incident data if needed
-    const updatedIncidentData = {
-      // Update the incident data based on formData or any other logic
-    };
   };
+
 
   return (
     <Container fluid className="px-6 py-4">
@@ -24,16 +26,17 @@ const CallCard = () => {
         </Col>
         <Col xl={6} lg={6} md={6} xs={12}>
           {/* Pass handleFormSubmit as a prop */}
-          <CallerDetail onFormSubmit={handleFormSubmit} />
+          <CallerDetail onFormSubmit={handleFormSubmit} resourceFieldValue={resourceFieldValue} />
         </Col>
         <Col xl={4} lg={12} md={12} xs={12}>
-          <Resource />
+          {/* Pass updateResourceField as a prop */}
+          <Resource onUpdateResource={updateResourceField} />
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col xl={12} lg={12} md={12} xs={12}>
           {/* Pass incidentData and callerFormData to AllIncident */}
-          <AllIncident incidentDataList={incidentDataList} />
+          <AllIncident incidentDataList={incidentDataList} resourceFieldValue={resourceFieldValue} />
         </Col>
       </Row>
     </Container>

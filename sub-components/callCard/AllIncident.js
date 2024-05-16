@@ -1,8 +1,9 @@
-import React from 'react';
 import { Card, Table, Badge, Button } from 'react-bootstrap';
+import React, { useState } from 'react'; // Import useState from React
 
-const AllIncident = ({ incidentDataList }) => {
+const AllIncident = ({ incidentDataList, resourceFieldValue }) => {
     // Dummy incidents
+    const [lastCreatedRowIndex, setLastCreatedRowIndex] = useState(null);
     const dummyIncidents = [
         {
           callcardNo: 'ABC123',
@@ -122,7 +123,11 @@ const AllIncident = ({ incidentDataList }) => {
                                     </td>
                                     <td className="align-middle">{incident.name}</td>
                                     <td className="align-middle">{incident.phoneNo}</td>
-                                    <td className="align-middle">{incident.phoneNo}</td>
+                                    {index === lastCreatedRowIndex ? (
+                                        <td className="align-middle">{incident.resource}</td>
+                                    ) : (
+                                        <td className="align-middle">-</td>
+                                    )}
                                     <td className="align-middle">
                                         <button className="btn btn-sm btn-outline-success" onClick={() => handleView(incident)}>View</button>
                                     </td>
