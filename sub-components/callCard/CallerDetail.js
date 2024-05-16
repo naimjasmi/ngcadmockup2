@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Form, Button, Col, Row, FormSelect } from 'react-bootstrap';
 
-const CallerDetail = ({ onFormSubmit }) => {
+const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
+  console.log('Resource Field Value:', resourceFieldValue);
   const [formData, setFormData] = useState({
     callcardNo: '',
     building: '',
@@ -20,6 +21,7 @@ const CallerDetail = ({ onFormSubmit }) => {
     propertyUsage: '',
     nature: '',
     priority: '',
+    resource: resourceFieldValue,
     name: '',
     intersection: '',
     apartment: '',
@@ -138,8 +140,9 @@ const CallerDetail = ({ onFormSubmit }) => {
     const generatedCallCardNo = generateCallCardNo();
     setCallCardNo(generatedCallCardNo); // Set the call card number state
     // Merge with form data
-    const formDataWithId = { ...formData, callcardNo: generatedCallCardNo };
+    const formDataWithId = { ...formData, callcardNo: generatedCallCardNo, resource: resourceFieldValue }; // Include resource field
     // Call onFormSubmit and pass the form data
+    
     onFormSubmit(formDataWithId);
     console.log(formDataWithId); // For demonstration
   };
@@ -152,6 +155,11 @@ const CallerDetail = ({ onFormSubmit }) => {
     }
     const randomNumber = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit number
     return `${randomAlphabets}${randomNumber}`;
+  };
+
+  const updateResourceField = (resName) => {
+    // Update the resource field in the form
+    setFormData({ ...formData, resource: resName });
   };
 
   return (
@@ -245,7 +253,7 @@ const CallerDetail = ({ onFormSubmit }) => {
             </Col>
           </Row>
           <Row>
-            <Col xl={8} md={12} className="mb-3">
+            <Col xl={4} md={12} className="mb-3">
               <Form.Control as={FormSelect} placeholder="Nature" id="nature" onChange={handleChange}>
                 {natureCodeOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -258,6 +266,9 @@ const CallerDetail = ({ onFormSubmit }) => {
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
+            </Col>
+            <Col xl={4} md={12} className="mb-3">
+              <Form.Control type="text" placeholder="Resource" id="resource" value={resourceFieldValue} onChange={handleChange} />
             </Col>
           </Row>
           <hr className="my-2" />

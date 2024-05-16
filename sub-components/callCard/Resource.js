@@ -4,7 +4,7 @@ import { ProgressBar, Col, Row, Card, Table, Image, Form } from 'react-bootstrap
 import { FormSelect } from 'widgets';
 import { ResourceData as initialResourceData } from '/data/resource/ResourceData';
 
-const Resource = () => {
+const Resource = ({ onUpdateResource }) => { // Accept onUpdateResource as a prop
     const [resourceData, setResourceData] = useState(initialResourceData);
     const [filteredData, setFilteredData] = useState(initialResourceData);
     const [selectedProximity, setSelectedProximity] = useState('All Resources');
@@ -68,6 +68,8 @@ const Resource = () => {
         });
         setResourceData(updatedData);
         setFilteredData(updatedData);
+        const dispatchedResourceName = item.resName;
+        onUpdateResource(dispatchedResourceName);
     };
 
     return (
