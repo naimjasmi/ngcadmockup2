@@ -123,11 +123,7 @@ const AllIncident = ({ incidentDataList, resourceFieldValue }) => {
                                     </td>
                                     <td className="align-middle">{incident.name}</td>
                                     <td className="align-middle">{incident.phoneNo}</td>
-                                    {index === lastCreatedRowIndex ? (
-                                        <td className="align-middle">{incident.resource}</td>
-                                    ) : (
-                                        <td className="align-middle">-</td>
-                                    )}
+                                    <td className="align-middle">{incident.resource}</td> {/* Display resource name */}
                                     <td className="align-middle">
                                         <button className="btn btn-sm btn-outline-success" onClick={() => handleView(incident)}>View</button>
                                     </td>
