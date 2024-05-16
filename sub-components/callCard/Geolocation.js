@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row, Form, Button } from 'react-bootstrap';
+import { Col, Row, Form, Button} from 'react-bootstrap';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import MarkerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -85,7 +85,7 @@ const Geolocation = () => {
         <Col>
           <Form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
             <Row>
-              <Col xl={8} lg={8} md={8} xs={4}>
+              <Col xl={4} lg={8} md={8} xs={4}>
                 <Form.Group>
                   <Form.Control
                     type="text"
@@ -105,7 +105,7 @@ const Geolocation = () => {
       <Row>
         <Col>
           
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "668px" }}>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "868px" }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
