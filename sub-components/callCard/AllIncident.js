@@ -1,9 +1,8 @@
 import { Card, Table, Badge, Button } from 'react-bootstrap';
 import React, { useState } from 'react'; // Import useState from React
 
-const AllIncident = ({ incidentDataList, resourceFieldValue }) => {
+const AllIncident = ({ incidentDataList }) => {
     // Dummy incidents
-    const [lastCreatedRowIndex, setLastCreatedRowIndex] = useState(null);
     const dummyIncidents = [
         {
           callcardNo: 'ABC123',
