@@ -13,11 +13,13 @@ const Comment = () => {
         setNewMessage('');
     };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent the default behavior of the Enter key
-            handleSendMessage(); // Call the sendMessage function
-        }
+    const formatMessageText = (text) => {
+        return text.split('\n').map((line, index) => (
+            <span key={index}>
+                {line}
+                <br />
+            </span>
+        ));
     };
 
     return (
@@ -35,25 +37,29 @@ const Comment = () => {
                                     message.sender === 'user' ? 'bg-green-200 self-end' : 'bg-gray-200 self-start'
                                 }`}
                             >
-                                <p className="mb-0">{message.text}</p>
+                                <p className="mb-0">
+                                    {formatMessageText(message.text)}
+                                </p>
                                 <small className="text-muted">{message.time}</small>
                             </div>
                         ))}
                     </div>
                     <Row className="mt-3">
                         <Form.Group as={Row} className="mb-3 position-relative">
-                            <Col md={12} xs={12} className="relative">
+                            <Col md={10} xs={10} className="relative d-flex"> {/* Increase the width to 10 columns */}
                                 <Form.Control
-                                    type="text"
+                                    as="textarea" // Changed to textarea
+                                    rows={3} // Set the initial number of rows
                                     placeholder="Add Comment..."
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
-                                    onKeyPress={handleKeyPress} // Call handleKeyPress on key press
-                                    className="w-full pr-12" // Added pr-12 to accommodate icon
+                                    className="flex-grow-1" // Use flex-grow to make it take available space
                                 />
+                            </Col>
+                            <Col md={2} xs={2} className="d-flex align-items-end"> {/* Set the button width to 2 columns */}
                                 <Button
                                     variant="success"
-                                    className="position-absolute end-0 bottom-0 h-full px-3"
+                                    className="w-120" // Make the button take full width of the column
                                     onClick={handleSendMessage}
                                 >
                                     <BsArrowRight />
