@@ -8,7 +8,6 @@ const CallCard = () => {
   const [resourceFieldValue, setResourceFieldValue] = useState('');
 
   const updateResourceField = (resName) => {
-    console.log('Dispatched Resource:', resName);
     setResourceFieldValue(resName);
   };
 
