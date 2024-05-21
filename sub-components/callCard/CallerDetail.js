@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Card, Form, Button, Col, Row, FormSelect } from 'react-bootstrap';
 
 const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
-  console.log('Resource Field Value:', resourceFieldValue);
   const [formData, setFormData] = useState({
     callcardNo: '',
     building: '',
@@ -143,7 +142,6 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
     const formDataWithId = { ...formData, callcardNo: generatedCallCardNo, resource: resourceFieldValue }; // Include resource field
     // Call onFormSubmit and pass the form data
     onFormSubmit(formDataWithId);
-    console.log(formDataWithId); // For demonstration
   };
 
   const generateCallCardNo = () => {

@@ -19,7 +19,6 @@ const Geolocation = () => {
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
-      console.error('Error fetching search results:', error);
     }
   };
 
@@ -66,7 +65,6 @@ const Geolocation = () => {
         setMarkedMarkers(updatedMarkers);
       }
     } catch (error) {
-      console.error('Error fetching location name:', error);
     }
   };
 
