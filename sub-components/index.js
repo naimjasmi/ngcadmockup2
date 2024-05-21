@@ -30,10 +30,6 @@ import Resource from 'sub-components/callCard/Resource';
 import AllIncident from 'sub-components/callCard/AllIncident';
 
 // Wrap the code accessing the window object with a conditional check
-let DropFiles;
-if (typeof window !== 'undefined') {
-    DropFiles = require('widgets/dropfiles/DropFiles').default;
-}
 
 export {
     ActiveProjects,
@@ -46,7 +42,6 @@ export {
     ProfileHeader,
     ProjectsContributions,
     RecentFromBlog,
-    DropFiles,
 
     DeleteAccount, 
     EmailSetting,  
