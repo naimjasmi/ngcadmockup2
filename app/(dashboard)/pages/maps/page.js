@@ -20,7 +20,7 @@ const Maps = () => {
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
-      
+      console.error('Error searching location:', error);
     }
   };
 
@@ -47,27 +47,30 @@ const Maps = () => {
   };
 
   const handleMarkerDragEnd = async (e, index) => {
-    const updatedMarkers = [...markedMarkers];
-    updatedMarkers[index] = {
-      ...updatedMarkers[index],
-      lat: e.target._latlng.lat,
-      lon: e.target._latlng.lng
-    };
-    setMarkedMarkers(updatedMarkers);
+    // Ensure this code only runs on the client-side
+    if (typeof window !== 'undefined') {
+      const updatedMarkers = [...markedMarkers];
+      updatedMarkers[index] = {
+        ...updatedMarkers[index],
+        lat: e.target._latlng.lat,
+        lon: e.target._latlng.lng
+      };
+      setMarkedMarkers(updatedMarkers);
 
-    // Fetch location name based on new coordinates
-    try {
-      const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
-      const data = await response.json();
-      if (data && data.display_name) {
-        updatedMarkers[index] = {
-          ...updatedMarkers[index],
-          name: data.display_name
-        };
-        setMarkedMarkers(updatedMarkers);
+      // Fetch location name based on new coordinates
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
+        const data = await response.json();
+        if (data && data.display_name) {
+          updatedMarkers[index] = {
+            ...updatedMarkers[index],
+            name: data.display_name
+          };
+          setMarkedMarkers(updatedMarkers);
+        }
+      } catch (error) {
+        console.error('Error fetching location name:', error);
       }
-    } catch (error) {
-      
     }
   };
 

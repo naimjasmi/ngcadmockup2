@@ -1,5 +1,6 @@
 'use client'
 // import node module libraries
+import React from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 
 // import widget as custom components
@@ -16,6 +17,13 @@ import {
 } from 'sub-components'
 
 const Profile = () => {
+  // Wrap the component content with a check for window
+  if (typeof window === 'undefined') {
+    // Return a placeholder or null if window is not available
+    return null;
+  }
+
+  // If window is available, render the component content
   return (
     <Container fluid className="p-6">
 
