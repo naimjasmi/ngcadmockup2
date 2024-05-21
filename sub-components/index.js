@@ -23,37 +23,39 @@ import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
 
-import DropFiles  from 'widgets/dropfiles/DropFiles';
-
-// sub components for /callCard
 import CallerDetail from 'sub-components/callCard/CallerDetail';
 import Comment from 'sub-components/callCard/Comment';
 import Geolocation from 'sub-components/callCard/Geolocation';
 import Resource from 'sub-components/callCard/Resource';
 import AllIncident from 'sub-components/callCard/AllIncident';
 
+// Wrap the code accessing the window object with a conditional check
+let DropFiles;
+if (typeof window !== 'undefined') {
+    DropFiles = require('widgets/dropfiles/DropFiles').default;
+}
+
 export {
-   ActiveProjects,
-   TasksPerformance,
-   Teams,
+    ActiveProjects,
+    TasksPerformance,
+    Teams,
    
-   AboutMe,
-   ActivityFeed,
-   MyTeam,
-   ProfileHeader,
-   ProjectsContributions,
-   RecentFromBlog,
-   DropFiles,
+    AboutMe,
+    ActivityFeed,
+    MyTeam,
+    ProfileHeader,
+    ProjectsContributions,
+    RecentFromBlog,
+    DropFiles,
 
-
-   DeleteAccount, 
-   EmailSetting,  
-   GeneralSetting, 
-   Notifications, 
-   Preferences,
-   CallerDetail,
-   Comment,
-   Geolocation,
-   Resource,
-   AllIncident
+    DeleteAccount, 
+    EmailSetting,  
+    GeneralSetting, 
+    Notifications, 
+    Preferences,
+    CallerDetail,
+    Comment,
+    Geolocation,
+    Resource,
+    AllIncident
 };

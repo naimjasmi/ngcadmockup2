@@ -1,17 +1,16 @@
 'use client'
-// import node module libraries
+import React from 'react';
 import { Container } from 'react-bootstrap';
-
-// import widget as custom components
-
-// import sub components
-import { Notifications, DeleteAccount, GeneralSetting, EmailSetting, Preferences } from 'sub-components'
+import { Notifications, DeleteAccount, GeneralSetting, EmailSetting, Preferences } from 'sub-components';
 
 const Settings = () => {
+  // Ensure this component is only rendered on the client-side
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
   return (
     <Container fluid className="p-6">
-
-
       {/* General Settings */}
       <GeneralSetting />
 
@@ -26,9 +25,8 @@ const Settings = () => {
 
       {/* Delete Your Account */}
       <DeleteAccount />
-
     </Container>
-  )
+  );
 }
 
-export default Settings
+export default Settings;

@@ -17,6 +17,10 @@ const CallCard = () => {
     setIncidentDataList([...incidentDataList, updatedFormData]);
   };
 
+  // Ensure this component is only rendered on the client-side
+  if (typeof window === 'undefined') {
+    return null;
+  }
 
   return (
     <Container fluid className="px-6 py-4">
