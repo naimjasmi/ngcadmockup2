@@ -170,7 +170,7 @@ const getPriorityColor = (priority) => {
 
 const handleView = (incident) => {
     // Implement the logic to handle the view action here
-    console.log('View incident:', incident);
+    
 };
 
 export default AllIncident;
