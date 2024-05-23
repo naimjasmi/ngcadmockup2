@@ -34,13 +34,13 @@ const Maps = () => {
   };
 
   const handleMarkButtonClick = (result) => {
-    if (!result) return; // Make sure there's a valid result
+    if (!result) return;
 
     const newMarker = {
       lat: parseFloat(result.lat),
       lon: parseFloat(result.lon),
       name: result.display_name,
-      isDraggingEnabled: true // Initialize dragging state for this marker
+      isDraggingEnabled: true,
     };
     setMarkedMarkers([...markedMarkers, newMarker]);
   };
@@ -56,18 +56,17 @@ const Maps = () => {
     updatedMarkers[index] = {
       ...updatedMarkers[index],
       lat: e.target._latlng.lat,
-      lon: e.target._latlng.lng
+      lon: e.target._latlng.lng,
     };
     setMarkedMarkers(updatedMarkers);
 
-    // Fetch location name based on new coordinates
     try {
       const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
       const data = await response.json();
       if (data && data.display_name) {
         updatedMarkers[index] = {
           ...updatedMarkers[index],
-          name: data.display_name
+          name: data.display_name,
         };
         setMarkedMarkers(updatedMarkers);
       }
@@ -80,13 +79,12 @@ const Maps = () => {
     const updatedMarkers = [...markedMarkers];
     updatedMarkers[index] = {
       ...updatedMarkers[index],
-      isDraggingEnabled: !updatedMarkers[index].isDraggingEnabled
+      isDraggingEnabled: !updatedMarkers[index].isDraggingEnabled,
     };
     setMarkedMarkers(updatedMarkers);
   };
 
   if (!isClient) {
-    // Return a placeholder or null if it's not client-side
     return null;
   }
 
@@ -135,19 +133,16 @@ const Maps = () => {
                 <Marker
                   key={`marked-${index}`}
                   position={[marker.lat, marker.lon]}
-                  draggable={marker.isDraggingEnabled} // Set draggable based on state
+                  draggable={marker.isDraggingEnabled}
                   icon={defaultIcon}
-                  eventHandlers={{
-                    dragend: (e) => handleMarkerDragEnd(e, index)
-                  }}
+                  eventHandlers={{ dragend: (e) => handleMarkerDragEnd(e, index) }}
                 >
                   <Popup>
                     <div>
                       {marker.name}<br/>
                       <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
                       <Button className='m-1' onClick={() => toggleDragging(index)} size="sm">
-                        {marker.isDraggingEnabled ? 'Lock' : 'Unlock'
-                        }
+                        {marker.isDraggingEnabled ? 'Lock' : 'Unlock'}
                       </Button>
                     </div>
                   </Popup>
@@ -157,9 +152,7 @@ const Maps = () => {
                 <Marker
                   key={result.place_id}
                   position={[parseFloat(result.lat), parseFloat(result.lon)]}
-                  eventHandlers={{
-                    click: () => handleMarkButtonClick(result)
-                  }}
+                  eventHandlers={{ click: () => handleMarkButtonClick(result) }}
                   icon={defaultIcon}
                 >
                   <Popup>
@@ -175,7 +168,7 @@ const Maps = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default Maps;
