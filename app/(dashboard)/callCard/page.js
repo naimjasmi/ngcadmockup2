@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'; // Import prop-types for type checking
 import { Col, Row, Container } from 'react-bootstrap';
 import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components'; // Adjust the path as needed
 
@@ -45,6 +46,14 @@ const CallCard = () => {
       </Row>
     </Container>
   );
+};
+
+// Prop types for better type checking
+CallCard.propTypes = {
+  incidentDataList: PropTypes.array,
+  resourceFieldValue: PropTypes.string,
+  handleFormSubmit: PropTypes.func,
+  updateResourceField: PropTypes.func,
 };
 
 export default CallCard;
