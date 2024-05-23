@@ -1,16 +1,25 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Row, Form, Button, Container } from 'react-bootstrap';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import MarkerIcon from 'leaflet/dist/images/marker-icon.png';
-import MarkerShadow from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
+
+// Dynamically import MapContainer, TileLayer, Marker, Popup with no SSR
+const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
 
 const Maps = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [markedMarkers, setMarkedMarkers] = useState([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSearch = async () => {
     if (searchQuery.trim() === '') return;
@@ -22,10 +31,6 @@ const Maps = () => {
     } catch (error) {
       console.error('Error searching location:', error);
     }
-  };
-
-  const handleResultClick = (result) => {
-    // No automatic marking when clicking on a marker
   };
 
   const handleMarkButtonClick = (result) => {
@@ -47,30 +52,27 @@ const Maps = () => {
   };
 
   const handleMarkerDragEnd = async (e, index) => {
-    // Ensure this code only runs on the client-side
-    if (typeof window !== 'undefined') {
-      const updatedMarkers = [...markedMarkers];
-      updatedMarkers[index] = {
-        ...updatedMarkers[index],
-        lat: e.target._latlng.lat,
-        lon: e.target._latlng.lng
-      };
-      setMarkedMarkers(updatedMarkers);
+    const updatedMarkers = [...markedMarkers];
+    updatedMarkers[index] = {
+      ...updatedMarkers[index],
+      lat: e.target._latlng.lat,
+      lon: e.target._latlng.lng
+    };
+    setMarkedMarkers(updatedMarkers);
 
-      // Fetch location name based on new coordinates
-      try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
-        const data = await response.json();
-        if (data && data.display_name) {
-          updatedMarkers[index] = {
-            ...updatedMarkers[index],
-            name: data.display_name
-          };
-          setMarkedMarkers(updatedMarkers);
-        }
-      } catch (error) {
-        console.error('Error fetching location name:', error);
+    // Fetch location name based on new coordinates
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
+      const data = await response.json();
+      if (data && data.display_name) {
+        updatedMarkers[index] = {
+          ...updatedMarkers[index],
+          name: data.display_name
+        };
+        setMarkedMarkers(updatedMarkers);
       }
+    } catch (error) {
+      console.error('Error fetching location name:', error);
     }
   };
 
@@ -82,6 +84,21 @@ const Maps = () => {
     };
     setMarkedMarkers(updatedMarkers);
   };
+
+  if (!isClient) {
+    // Return a placeholder or null if it's not client-side
+    return null;
+  }
+
+  const defaultIcon = new L.Icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12.5, 41],
+    popupAnchor: [0, -41],
+    shadowSize: [41, 41],
+  });
 
   return (
     <Container fluid>
@@ -119,15 +136,7 @@ const Maps = () => {
                   key={`marked-${index}`}
                   position={[marker.lat, marker.lon]}
                   draggable={marker.isDraggingEnabled} // Set draggable based on state
-                  icon={new L.Icon({
-                    iconUrl: MarkerIcon.src,
-                    iconRetinaUrl: MarkerIcon.src,
-                    iconSize: [25, 41],
-                    iconAnchor: [12.5, 41],
-                    popupAnchor: [0, -41],
-                    shadowUrl: MarkerShadow.src,
-                    shadowSize: [41, 41],
-                  })}
+                  icon={defaultIcon}
                   eventHandlers={{
                     dragend: (e) => handleMarkerDragEnd(e, index)
                   }}
@@ -137,7 +146,8 @@ const Maps = () => {
                       {marker.name}<br/>
                       <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
                       <Button className='m-1' onClick={() => toggleDragging(index)} size="sm">
-                        {marker.isDraggingEnabled ? 'Lock' : 'Unlock'}
+                        {marker.isDraggingEnabled ? 'Lock' : 'Unlock'
+                        }
                       </Button>
                     </div>
                   </Popup>
@@ -148,17 +158,9 @@ const Maps = () => {
                   key={result.place_id}
                   position={[parseFloat(result.lat), parseFloat(result.lon)]}
                   eventHandlers={{
-                    click: () => handleResultClick(result)
+                    click: () => handleMarkButtonClick(result)
                   }}
-                  icon={new L.Icon({
-                    iconUrl: MarkerIcon.src,
-                    iconRetinaUrl: MarkerIcon.src,
-                    iconSize: [25, 41],
-                    iconAnchor: [12.5, 41],
-                    popupAnchor: [0, -41],
-                    shadowUrl: MarkerShadow.src,
-                    shadowSize: [41, 41],
-                  })}
+                  icon={defaultIcon}
                 >
                   <Popup>
                     <div>
