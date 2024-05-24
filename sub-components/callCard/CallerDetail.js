@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Form, Button, Col, Row, FormSelect } from 'react-bootstrap';
 
-const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
-  const [formData, setFormData] = useState({
+const CallerDetail = ({ onFormSubmit, resourceFieldValue, selectedCallCard }) => {
+  const initialFormData = {
     callcardNo: '',
     building: '',
     level: '',
@@ -26,7 +26,9 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
     apartment: '',
     city: '',
     phone: ''
-  });
+  };
+
+  const [formData, setFormData] = useState(() => initialFormData);
 
   const levelOptions = [
     { value: '', label: 'Level' }, // Placeholder option
@@ -120,6 +122,18 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
     { value: 'Cyberjaya', label: 'Cyberjaya' }
   ];
 
+  useEffect(() => {
+    if (selectedCallCard) {
+      setFormData(selectedCallCard);
+    }
+  }, [selectedCallCard]);
+
+  const clearForm = () => {
+    console.log("Before clearing form:", formData); // Log before clearing
+    setFormData(initialFormData); // Clear the form
+    console.log("After clearing form:", initialFormData); // Log after clearing
+  };
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
@@ -168,24 +182,24 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col xl={3} md={12} className="mb-3">
-              <Form.Control as={FormSelect} defaultValue="Always" id="proximity" onChange={handleChange}>
+              <Form.Control as={FormSelect} defaultValue="Always" id="proximity" value={formData.proximity} onChange={handleChange}>
                 {proximityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={5} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Business Place / Location (Administrative Division)" id="building" onChange={handleChange} />
+            <Form.Control type="text" placeholder="Business Place / Location (Administrative Division)" id="building" value={formData.building} onChange={handleChange} />
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control as={FormSelect} defaultValue="Level" id="level" onChange={handleChange}>
+              <Form.Control as={FormSelect} defaultValue="Level" id="level" value={formData.level} onChange={handleChange}>
                 {levelOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Province" id="province" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Province" id="province" value={formData.province} onChange={handleChange}>
                 {provinceOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -194,16 +208,16 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
           </Row>
           <Row>
             <Col xl={1} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="St. No" id="streetNo" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="St. No" id="streetNo" value={formData.streetNo} onChange={handleChange} required />
             </Col>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Street / Intersection" id="street" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="Street / Intersection" id="street" value={formData.street} onChange={handleChange} required />
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Postal Code" id="postalCode" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="Postal Code" id="postalCode" value={formData.postalCode} onChange={handleChange} required />
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Precint" id="precint" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Precint" id="precint" value={formData.precint} onChange={handleChange}>
                 {precintOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -221,44 +235,44 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Phone No" id="phoneNo" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="Phone No" id="phoneNo" value={formData.phoneNo} onChange={handleChange} required />
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Phone Extension" id="phextension" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Phone Extension" id="phextension" value={formData.phextension} onChange={handleChange} />
             </Col>
             <Col xl={6} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Crossing Street" id="crossingStreet" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Crossing Street" id="crossingStreet" value={formData.crossingStreet} onChange={handleChange} />
             </Col>
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Direction" id="direction" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Direction" id="direction" value={formData.direction} onChange={handleChange}>
                 {directionOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={2} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Risk Level" id="riskLevel" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Risk Level" id="riskLevel" value={formData.riskLevel} onChange={handleChange}>
                 {risklevelOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={6} md={12} className="mb-3">
-              <Form.Control type="text" placeholder="Property Usage" id="propertyUsage" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Property Usage" id="propertyUsage" value={formData.propertyUsage} onChange={handleChange} />
             </Col>
           </Row>
           <Row>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Nature" id="nature" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Nature" id="nature" value={formData.nature} onChange={handleChange}>
                 {natureCodeOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col xl={4} md={12} className="mb-3">
-              <Form.Control as={FormSelect} placeholder="Priority" id="priority" onChange={handleChange} required>
+              <Form.Control as={FormSelect} placeholder="Priority" id="priority" value={formData.priority} onChange={handleChange} required>
                 {priorityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -274,45 +288,46 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue }) => {
           </div>
           <Row className="mb-3">
             <Col sm={8} xs={12}>
-              <Form.Control type="text" placeholder="Caller Name" id="name" onChange={handleChange} required />
+              <Form.Control type="text" placeholder="Caller Name" id="name" value={formData.name} onChange={handleChange} required />
             </Col>
             <Col md={4} xs={12}>
-              <Form.Control type="text" placeholder="Enter Phone" id="phone" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Enter Phone" id="phone" value={formData.phone} onChange={handleChange} />
             </Col>
           </Row>
           <Row className="mb-3">
             <Col sm={3}>
-              <Form.Control type="text" placeholder="St. No" id="streetNo" onChange={handleChange} />
+              <Form.Control type="text" placeholder="St. No" id="streetNo" value={formData.streetNo} onChange={handleChange} />
             </Col>
             <Col sm={5}>
-              <Form.Control type="text" placeholder="Street / Intersection" id="intersection" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Street / Intersection" id="intersection" value={formData.intersection} onChange={handleChange} />
             </Col>
             <Col sm={4}>
-              <Form.Control type="text" placeholder="Apartment" id="apartment" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Apartment" id="apartment" value={formData.apartment} onChange={handleChange} />
             </Col>
           </Row>
           <Row className="mb-3">
             <Col sm={3}>
-              <Form.Control as={FormSelect} placeholder="Precint" id="precint" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="Precint" id="precint" value={formData.precint} onChange={handleChange}>
                 {precintOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col sm={5}>
-              <Form.Control as={FormSelect} placeholder="City" id="city" onChange={handleChange}>
+              <Form.Control as={FormSelect} placeholder="City" id="city" value={formData.city} onChange={handleChange}>
                 {cityOptions.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </Form.Control>
             </Col>
             <Col sm={4}>
-              <Form.Control type="text" placeholder="Postal Code" id="postalCode" onChange={handleChange} />
+              <Form.Control type="text" placeholder="Postal Code" id="postalCode" value={formData.postalCode} onChange={handleChange} />
             </Col>
           </Row>
           <Row>
             <Col xl={3} md={12}>
               <Button variant="primary" type="submit">Create</Button>
+              <Button variant="secondary" onClick={clearForm}>Clear</Button>
             </Col>
           </Row>
         </Form>

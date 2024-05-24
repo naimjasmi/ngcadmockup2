@@ -1,7 +1,9 @@
+// page.js
+
 'use client'
 import React, { useState } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components'; // Adjust the path as needed
+import { CallerDetail, AllIncident, Comment, Resource } from 'sub-components';
 
 const CallCard = () => {
   const [incidentDataList, setIncidentDataList] = useState([]);
@@ -15,10 +17,6 @@ const CallCard = () => {
     const updatedFormData = { ...formData, resource: resourceFieldValue };
     setIncidentDataList([...incidentDataList, updatedFormData]);
   };
-
-  if (typeof window === 'undefined') {
-    return null;
-  }
 
   return (
     <Container fluid className="px-6 py-4">
@@ -43,3 +41,4 @@ const CallCard = () => {
 };
 
 export default CallCard;
+
