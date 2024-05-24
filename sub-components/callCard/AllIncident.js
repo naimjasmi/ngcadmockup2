@@ -1,8 +1,13 @@
 import { Card, Table, Badge, Button } from 'react-bootstrap';
 import React, { useState } from 'react'; // Import useState from React
 
-const AllIncident = ({ incidentDataList }) => {
-    // Dummy incidents
+const AllIncident = ({ incidentDataList, onCallCardClick }) => {
+    const [selectedCallCard, setSelectedCallCard] = useState(null);
+
+    const handleCallCardClick = (incident) => {
+        setSelectedCallCard(incident);
+        onCallCardClick(incident);
+    };
     const dummyIncidents = [
         {
           callcardNo: 'ABC123',
@@ -99,7 +104,7 @@ const AllIncident = ({ incidentDataList }) => {
                         <tbody>
                             {mergedIncidents.map((incident, index) => (
                                 <tr key={index}>
-                                    <td className="align-middle">{incident.callcardNo}</td>
+                                <td className="align-middle" onClick={() => handleCallCardClick(incident)} style={{ cursor: 'pointer' }}>{incident.callcardNo}</td>
                                     <td className="align-middle">{incident.nature}</td>
                                     <td className="align-middle">
                                         {`No. ${incident.streetNo},
