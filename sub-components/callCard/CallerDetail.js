@@ -325,8 +325,8 @@ const CallerDetail = ({ onFormSubmit, resourceFieldValue, selectedCallCard }) =>
             </Col>
           </Row>
           <Row>
-            <Col xl={3} md={12}>
-              <Button variant="primary" type="submit">Create</Button>
+            <Col xl={5} md={12}>
+              <Button variant="primary" type="submit" >Create</Button> &nbsp;
               <Button variant="secondary" onClick={clearForm}>Clear</Button>
             </Col>
           </Row>
