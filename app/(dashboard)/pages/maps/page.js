@@ -1,11 +1,90 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Col, Row, Form, Button, Container } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Dynamically import MapContainer, TileLayer, Marker, Popup with no SSR
+// Dummy incidents data
+const dummyIncidents = [
+  {
+    callcardNo: 'ABC123',
+    nature: 'Fire',
+    streetNo: '123',
+    level: 'Level 1',
+    street: 'Main Street',
+    precint: 'Precint2',
+    postalCode: '12345',
+    City: 'Ampang',
+    province: 'Kuala Lumpur',
+    direction: 'North',
+    riskLevel: 'High',
+    priority: 'Very High',
+    name: 'Halimah Ja',
+    phoneNo: '123-456-7890',
+    resource: 'PO 245',
+    lat: 2.9213,
+    lon: 101.7244,
+  },
+  {
+    callcardNo: 'DEF456',
+    nature: 'Robbery',
+    streetNo: '456',
+    level: 'Level 2',
+    street: 'First Avenue',
+    precint: 'Precint3',
+    postalCode: '54321',
+    City: 'Petaling Jaya',
+    province: 'Selangor',
+    direction: 'South',
+    riskLevel: 'Moderate',
+    priority: 'High',
+    name: 'Safick Salleh',
+    phoneNo: '987-654-3210',
+    resource: 'MEDIC 405',
+    lat: 3.0851,
+    lon: 101.5931,
+  },
+  {
+    callcardNo: 'GHI789',
+    nature: 'Assault',
+    streetNo: '789',
+    level: 'Level 3',
+    street: 'Second Street',
+    precint: 'Precint4',
+    postalCode: '67890',
+    City: 'Puchong',
+    province: 'Selangor',
+    direction: 'East',
+    riskLevel: 'Low',
+    priority: 'Medium',
+    name: 'Dwayne Pebble',
+    phoneNo: '111-222-3333',
+    resource: 'FI 303',
+    lat: 2.9986,
+    lon: 101.5921,
+  },
+  {
+    callcardNo: 'JKL012',
+    nature: 'Traffic Accident',
+    streetNo: '012',
+    level: 'Level 4',
+    street: 'Third Avenue',
+    precint: 'Precint5',
+    postalCode: '09876',
+    City: 'Kuala Lumpur',
+    province: 'Kuala Lumpur',
+    direction: 'West',
+    riskLevel: 'Very High',
+    priority: 'Very High',
+    name: 'Raju Kumar Kamir',
+    phoneNo: '444-555-6666',
+    resource: 'PO 757',
+    lat: 3.1390,
+    lon: 101.6869,
+  }
+];
+
 const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
 const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
 const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
@@ -14,8 +93,15 @@ const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ss
 const Maps = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [markedMarkers, setMarkedMarkers] = useState([]);
+  const [markedMarkers, setMarkedMarkers] = useState(dummyIncidents.map(incident => ({
+    lat: incident.lat,
+    lon: incident.lon,
+    name: `${incident.nature} - ${incident.City}`,
+    isDraggingEnabled: false,
+    details: `Nature: ${incident.nature}, Risk Level: ${incident.riskLevel}, Priority: ${incident.priority}`,
+  })));
   const [isClient, setIsClient] = useState(false);
+  const mapRef = useRef(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -41,6 +127,7 @@ const Maps = () => {
       lon: parseFloat(result.lon),
       name: result.display_name,
       isDraggingEnabled: true,
+      details: result.display_name,
     };
     setMarkedMarkers([...markedMarkers, newMarker]);
   };
@@ -53,20 +140,16 @@ const Maps = () => {
 
   const handleMarkerDragEnd = async (e, index) => {
     const updatedMarkers = [...markedMarkers];
-    updatedMarkers[index] = {
-      ...updatedMarkers[index],
-      lat: e.target._latlng.lat,
-      lon: e.target._latlng.lng,
-    };
-    setMarkedMarkers(updatedMarkers);
-
     try {
       const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.target._latlng.lat}&lon=${e.target._latlng.lng}&format=json`);
       const data = await response.json();
       if (data && data.display_name) {
         updatedMarkers[index] = {
-          ...updatedMarkers[index],
+          lat: e.target._latlng.lat,
+          lon: e.target._latlng.lng,
           name: data.display_name,
+          isDraggingEnabled: updatedMarkers[index].isDraggingEnabled,
+          details: data.display_name,
         };
         setMarkedMarkers(updatedMarkers);
       }
@@ -124,7 +207,7 @@ const Maps = () => {
       <Row>
         <Col>
           <div style={{ width: '100%', height: 'calc(90vh - 80px)' }}>
-            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "100%" }}>
+            <MapContainer center={[2.9264, 101.6964]} zoom={14} style={{ height: "100%" }} whenCreated={mapInstance => { mapRef.current = mapInstance }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -140,8 +223,9 @@ const Maps = () => {
                   <Popup>
                     <div>
                       {marker.name}<br/>
-                      <Button className='m-1' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
-                      <Button className='m-1' onClick={() => toggleDragging(index)} size="sm">
+                      {marker.details}<br/>
+                      <Button className='m-2' onClick={() => handleRemoveMarker(index)} size="sm">Remove</Button>
+                      <Button className='m-2' onClick={() => toggleDragging(index)} size="sm">
                         {marker.isDraggingEnabled ? 'Lock' : 'Unlock'}
                       </Button>
                     </div>
